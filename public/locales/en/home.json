@@ -1,0 +1,45 @@
+{
+    "hero": {
+        "heading": "Luxury Handcrafted Furniture",
+        "heading_part1": "Crafting Comfort",
+        "heading_part2": "Into Art",
+        "tagline": "Experience the epitome of luxury with Krafted Furniture. Handcrafted, premium designs for your sophisticated home.",
+        "description": "Transform your living space with timeless elegance and unparalleled craftsmanship",
+        "timelessElegance": "Timeless Elegance",
+        "scrollToExplore": "Scroll to Explore",
+        "ourStory": "Our Story",
+        "cta": {
+            "shop": "Shop Collection",
+            "explore": "Explore Categories"
+        }
+    },
+    "sections": {
+        "featuredCategories": "Featured Categories",
+        "bestSellers": "Best Sellers",
+        "bestSellersDesc": "Our most coveted pieces, loved for their timeless design and exceptional craftsmanship.",
+        "newArrivals": "New Arrivals",
+        "newArrivalsDesc": "Discover our latest additions, handpicked for discerning tastes.",
+        "trendingNow": "Trending Now",
+        "trendingNowDesc": "Discover what's popular this season with our trending furniture collection.",
+        "whyChooseUs": "Why Choose Us",
+        "testimonials": "What Our Customers Say"
+    },
+    "features": {
+        "quality": {
+            "title": "Premium Quality",
+            "description": "Handcrafted with the finest materials"
+        },
+        "delivery": {
+            "title": "Free Shipping",
+            "description": "Free delivery on all orders"
+        },
+        "warranty": {
+            "title": "Lifetime Warranty",
+            "description": "Quality guaranteed for life"
+        },
+        "support": {
+            "title": "24/7 Support",
+            "description": "Dedicated customer service team"
+        }
+    }
+}

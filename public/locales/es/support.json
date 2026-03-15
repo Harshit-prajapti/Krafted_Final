@@ -1,0 +1,65 @@
+{
+    "faq": {
+        "badge": "Centro de Ayuda",
+        "title": "Preguntas Frecuentes",
+        "tagline": "Encuentre respuestas a preguntas comunes sobre pedidos, envíos, devoluciones y más.",
+        "searchPlaceholder": "Buscar respuestas...",
+        "noResults": "No se encontraron preguntas que coincidan con su búsqueda.",
+        "stillQuestions": "¿Todavía tiene preguntas?",
+        "contactSupport": "Contactar Soporte",
+        "categories": {
+            "all": "Todas las Preguntas",
+            "orders": "Pedidos",
+            "shipping": "Envío",
+            "returns": "Devoluciones",
+            "payment": "Pago",
+            "warranty": "Garantía"
+        },
+        "questions": [
+            {
+                "category": "orders",
+                "question": "¿Cómo rastreo mi pedido?",
+                "answer": "Una vez que su pedido sea enviado, recibirá un número de seguimiento por correo electrónico. Puede usar este número para rastrear su entrega en nuestro sitio web o en la página de seguimiento del mensajero. También puede verificar el estado del pedido en su cuenta bajo \"Mis Pedidos\"."
+            },
+            {
+                "category": "orders",
+                "question": "¿Puedo modificar o cancelar mi pedido?",
+                "answer": "Los pedidos se pueden modificar o cancelar dentro de las 24 horas posteriores a su realización, siempre que no hayan sido enviados. Póngase en contacto con nuestro servicio de atención al cliente de inmediato si necesita realizar cambios. Una vez que un pedido está en producción o enviado, no es posible realizar modificaciones."
+            }
+        ]
+    },
+    "shipping": {
+        "badge": "Info de Entrega",
+        "title": "Envío y Entrega",
+        "tagline": "Tenemos gran cuidado en entregar sus muebles de forma segura a su puerta.",
+        "features": {
+            "whiteGlove": {
+                "title": "Entrega con Guante Blanco",
+                "description": "Nuestro equipo entrega en la habitación de su elección, desempaca y ensambla sus muebles."
+            },
+            "insured": {
+                "title": "Totalmente Asegurado",
+                "description": "Todos los envíos están totalmente asegurados contra daños durante el tránsito."
+            }
+        },
+        "zones": {
+            "title": "Zonas y Plazos de Entrega",
+            "deliveryTime": "Tiempo de Entrega",
+            "shippingCost": "Costo de Envío",
+            "items": [
+                {
+                    "zone": "Ciudades Metropolitanas",
+                    "cities": "Mumbai, Delhi, Bangalore, Chennai, Hyderabad, Kolkata, Pune",
+                    "time": "3-5 Días Hábiles",
+                    "cost": "Gratis por encima de ₹25,000"
+                }
+            ]
+        }
+    },
+    "terms": {
+        "badge": "Legal",
+        "title": "Términos y Condiciones",
+        "lastUpdated": "Última actualización: Enero 2026",
+        "toc": "Tabla de Contenidos"
+    }
+}

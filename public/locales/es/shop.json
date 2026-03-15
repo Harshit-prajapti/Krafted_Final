@@ -1,0 +1,28 @@
+{
+    "title": "Comprar muebles de lujo",
+    "filters": {
+        "title": "Filtros",
+        "categories": "Categorías",
+        "priceRange": "Rango de precios",
+        "color": "Color",
+        "material": "Material",
+        "inStock": "Solo en stock",
+        "onSale": "En oferta",
+        "clearFilters": "Borrar filtros"
+    },
+    "sort": {
+        "label": "Ordenar por",
+        "featured": "Destacados",
+        "priceLowToHigh": "Precio: bajo a alto",
+        "priceHighToLow": "Precio: alto a bajo",
+        "newest": "Más recientes",
+        "bestSelling": "Más vendidos",
+        "topRated": "Mejor valorados"
+    },
+    "results": {
+        "showing": "Mostrando",
+        "of": "de",
+        "products": "productos",
+        "noProducts": "No se encontraron productos que coincidan con sus criterios"
+    }
+}

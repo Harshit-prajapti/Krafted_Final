@@ -1,0 +1,106 @@
+{
+    "faq": {
+        "badge": "Help Center",
+        "title": "Frequently Asked Questions",
+        "tagline": "Find answers to common questions about orders, shipping, returns, and more.",
+        "searchPlaceholder": "Search for answers...",
+        "noResults": "No questions found matching your search.",
+        "stillQuestions": "Still have questions?",
+        "contactSupport": "Contact Support",
+        "categories": {
+            "all": "All Questions",
+            "orders": "Orders",
+            "shipping": "Shipping",
+            "returns": "Returns",
+            "payment": "Payment",
+            "warranty": "Warranty"
+        },
+        "questions": [
+            {
+                "category": "orders",
+                "question": "How do I track my order?",
+                "answer": "Once your order is shipped, you will receive a tracking number via email. You can use this number to track your delivery on our website or the courier's tracking page. You can also check order status in your account under \"My Orders\"."
+            },
+            {
+                "category": "orders",
+                "question": "Can I modify or cancel my order?",
+                "answer": "Orders can be modified or cancelled within 24 hours of placing them, provided they haven't been shipped yet. Please contact our customer support immediately if you need to make changes. Once an order is in production or shipped, modifications are not possible."
+            },
+            {
+                "category": "orders",
+                "question": "How long does it take to process an order?",
+                "answer": "Standard orders are processed within 2-3 business days. Custom-made furniture pieces may take 4-6 weeks depending on complexity. You'll receive order confirmation and updates via email throughout the process."
+            }
+        ]
+    },
+    "shipping": {
+        "badge": "Delivery Info",
+        "title": "Shipping & Delivery",
+        "tagline": "We take great care in delivering your furniture safely to your doorstep.",
+        "features": {
+            "whiteGlove": {
+                "title": "White Glove Delivery",
+                "description": "Our team delivers to your room of choice, unpacks, and assembles your furniture."
+            },
+            "insured": {
+                "title": "Fully Insured",
+                "description": "All shipments are fully insured against damage during transit."
+            },
+            "scheduling": {
+                "title": "Flexible Scheduling",
+                "description": "Choose a delivery date and time slot that works best for you."
+            },
+            "packaging": {
+                "title": "Careful Packaging",
+                "description": "Each piece is carefully wrapped with protective materials for safe transit."
+            }
+        },
+        "zones": {
+            "title": "Delivery Zones & Timelines",
+            "deliveryTime": "Delivery Time",
+            "shippingCost": "Shipping Cost",
+            "items": [
+                {
+                    "zone": "Metro Cities",
+                    "cities": "Mumbai, Delhi, Bangalore, Chennai, Hyderabad, Kolkata, Pune",
+                    "time": "3-5 Business Days",
+                    "cost": "Free above ₹25,000"
+                },
+                {
+                    "zone": "Tier 2 Cities",
+                    "cities": "Ahmedabad, Jaipur, Lucknow, Chandigarh, Kochi, Indore, and more",
+                    "time": "5-7 Business Days",
+                    "cost": "Free above ₹30,000"
+                },
+                {
+                    "zone": "Other Locations",
+                    "cities": "All other serviceable pin codes across India",
+                    "time": "7-10 Business Days",
+                    "cost": "Calculated at checkout"
+                }
+            ]
+        },
+        "policies": {
+            "title": "Shipping Policies",
+            "processing": {
+                "title": "Order Processing",
+                "items": [
+                    "Orders are processed within 2-3 business days",
+                    "Custom orders may take 4-6 weeks to manufacture",
+                    "You'll receive tracking info once shipped",
+                    "SMS and email updates at every stage"
+                ]
+            }
+        }
+    },
+    "terms": {
+        "badge": "Legal",
+        "title": "Terms & Conditions",
+        "lastUpdated": "Last updated: January 2026",
+        "toc": "Table of Contents",
+        "questionsCTA": "Questions about these terms?",
+        "contactLegal": "Contact our legal team for clarification.",
+        "legalEmail": "legal@krafted.com",
+        "contactForm": "Contact Form"
+    }
+}

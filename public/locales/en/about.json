@@ -1,0 +1,56 @@
+{
+    "hero": {
+        "title": "Our Story",
+        "tagline": "Crafting luxury furniture that transforms houses into homes, one masterpiece at a time.",
+        "established": "Est. 2010"
+    },
+    "story": {
+        "title": "The Birth of Authority",
+        "paragraphs": [
+            "Rishi Dubey, grandson of B.K. Dubey and son of S. Dubey, took a decisive step to transform a generational dream into a global legacy.",
+            "Thus was born KEY KRAFTED ROYALE — the world’s first Authority Furniture Brand.",
+            "Not created for comfort alone. Not designed for decoration.",
+            "But engineered to embody Power, Position, Status, and Authority.",
+            "Every piece is crafted to radiate a Royal Authority Aura — an unspoken presence that commands respect before a single word is spoken.",
+            "This is furniture for leaders. For decision-makers. For individuals who do not follow trends — they set standards.",
+            "KEY KRAFTED ROYALE creates furniture that reflects your dominance in every space you occupy — your office, your home, your boardroom, your world.",
+            "This is not furniture. This is a symbol of who you are.",
+            "When you own KEY KRAFTED ROYALE, you don’t just buy craftsmanship. You claim your throne."
+        ],
+        "badge": "Authority & Legacy"
+    },
+    "values": {
+        "title": "Our Core Values",
+        "subtitle": "The principles that guide everything we create",
+        "items": {
+            "craftsmanship": {
+                "title": "Master Craftsmanship",
+                "description": "Each piece is handcrafted by skilled artisans with decades of experience, ensuring exceptional quality in every detail."
+            },
+            "materials": {
+                "title": "Premium Materials",
+                "description": "We source only the finest sustainable hardwoods, metals, and fabrics from trusted suppliers around the world."
+            },
+            "passion": {
+                "title": "Passion for Design",
+                "description": "Our designers blend timeless elegance with modern functionality to create furniture that inspires."
+            },
+            "guarantee": {
+                "title": "Quality Guarantee",
+                "description": "Every Krafted piece comes with a 10-year warranty, reflecting our confidence in lasting quality."
+            }
+        }
+    },
+    "stats": {
+        "experience": "Years Experience",
+        "customers": "Happy Customers",
+        "designs": "Unique Designs",
+        "satisfaction": "Satisfaction Rate"
+    },
+    "cta": {
+        "title": "Ready to Transform Your Space?",
+        "description": "Explore our curated collection of handcrafted furniture and find pieces that speak to your soul.",
+        "shop": "Shop Collection",
+        "contact": "Contact Us"
+    }
+}

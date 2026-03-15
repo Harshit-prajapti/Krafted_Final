@@ -1,0 +1,17 @@
+{
+    "general": {
+        "required": "This field is required",
+        "invalidEmail": "Invalid email address",
+        "minLength": "Must be at least {{min}} characters",
+        "maxLength": "Must be at most {{max}} characters",
+        "passwordMatch": "Passwords do not match",
+        "generic": "Something went wrong. Please try again."
+    },
+    "api": {
+        "networkError": "Network error. Please check your connection.",
+        "unauthorized": "Unauthorized access",
+        "forbidden": "Access forbidden",
+        "notFound": "Resource not found",
+        "serverError": "Internal server error"
+    }
+}

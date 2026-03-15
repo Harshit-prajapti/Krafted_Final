@@ -1,0 +1,26 @@
+{
+    "details": "Detalles del Producto",
+    "specifications": "Especificaciones",
+    "reviews": "Reseñas",
+    "relatedProducts": "Productos Relacionados",
+    "addToCart": "Añadir al Carrito",
+    "buyNow": "Comprar Ahora",
+    "outOfStock": "Agotado",
+    "inStock": "En Stock",
+    "selectColor": "Seleccionar Color",
+    "selectQuantity": "Seleccionar Cantidad",
+    "names": {
+        "royalThroneSofa": "Sofá Trono de Terciopelo Real",
+        "victorianGoldSofa": "Sofá con Ribetes de Oro Victoriano",
+        "imperialMahoganyTable": "Mesa de Comedor Imperial de Caoba",
+        "baroqueDiningChair": "Silla de Comedor Tallada Barroca",
+        "regalWingbackChair": "Silla Wingback Acolchada Regal",
+        "chesterfieldSofa": "Sofá Chesterfield de Cuero Clásico",
+        "royalCanopyBed": "Cama King con Dosel Real",
+        "palaceBedFrame": "Somier de Palacio Tallado a Mano",
+        "royalCoffeeTable": "Mesa de Centro Real con Tapa de Mármol",
+        "goldAccentConsole": "Consola con Acentos de Oro Antiguo",
+        "royalOttoman": "Otomana Tapizada Real",
+        "palaceSideTable": "Mesa Auxiliar de Palacio de Lujo"
+    }
+}

@@ -1,0 +1,35 @@
+{
+    "steps": {
+        "shipping": "Shipping",
+        "deliveryAddress": "Delivery address",
+        "payment": "Payment",
+        "secureCheckout": "Secure checkout"
+    },
+    "status": {
+        "creatingOrder": "Creating order...",
+        "initializingPayment": "Initializing payment...",
+        "verifyingPayment": "Verifying payment...",
+        "processing": "Processing..."
+    },
+    "errors": {
+        "failedToCreateOrder": "Failed to create order",
+        "paymentGatewayFailed": "Failed to load payment gateway. Please try again.",
+        "paymentInitFailed": "Failed to initialize payment. Please try again."
+    },
+    "order": "Order",
+    "summary": {
+        "title": "Order Summary",
+        "item": "item",
+        "items": "items",
+        "itemsInOrder": "Items in your order",
+        "moreItems": "more items",
+        "subtotal": "Subtotal",
+        "shipping": "Shipping",
+        "free": "FREE",
+        "tax": "Tax (18% GST)",
+        "total": "Total",
+        "incGst": "Inc. GST",
+        "estimatedDelivery": "Estimated Delivery",
+        "secureCheckout": "Secure Checkout"
+    }
+}

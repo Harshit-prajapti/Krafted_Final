@@ -1,0 +1,56 @@
+{
+    "hero": {
+        "title": "Nuestra Historia",
+        "tagline": "Creando muebles de lujo que transforman casas en hogares, una obra maestra a la vez.",
+        "established": "Est. 2010"
+    },
+    "story": {
+        "title": "El Nacimiento de la Autoridad",
+        "paragraphs": [
+            "Rishi Dubey, nieto de B.K. Dubey e hijo de S. Dubey, dio un paso decisivo para transformar un sueño generacional en un legado global.",
+            "Así nació KEY KRAFTED ROYALE — la primera Marca de Muebles de Autoridad del mundo.",
+            "No creado solo por comodidad. No diseñado para decoración.",
+            "Sino diseñado para encarnar Poder, Posición, Estatus y Autoridad.",
+            "Cada pieza está diseñada para irradiar un Aura de Autoridad Real — una presencia tácita que impone respeto antes de que se pronuncie una sola palabra.",
+            "Este es un mobiliario para líderes. Para tomadores de decisiones. Para personas que no siguen tendencias — ellos establecen estándares.",
+            "KEY KRAFTED ROYALE crea muebles que reflejan su dominio en cada espacio que ocupa — su oficina, su hogar, su sala de juntas, su mundo.",
+            "Esto no son muebles. Esto es un símbolo de quién es usted.",
+            "Cuando posee KEY KRAFTED ROYALE, no solo compra artesanía. Reclama su trono."
+        ],
+        "badge": "Autoridad y Legado"
+    },
+    "values": {
+        "title": "Nuestros Valores Fundamentales",
+        "subtitle": "Los principios que guían todo lo que creamos",
+        "items": {
+            "craftsmanship": {
+                "title": "Artesanía Maestra",
+                "description": "Cada pieza está hecha a mano por artesanos expertos con décadas de experiencia, garantizando una calidad excepcional en cada detalle."
+            },
+            "materials": {
+                "title": "Materiales de Primera",
+                "description": "Obtenemos solo las mejores maderas duras sostenibles, metales y telas de proveedores de confianza en todo el mundo."
+            },
+            "passion": {
+                "title": "Pasión por el Diseño",
+                "description": "Nuestros diseñadores combinan la elegancia atemporal con la funcionalidad moderna para crear muebles que inspiran."
+            },
+            "guarantee": {
+                "title": "Garantía de Calidad",
+                "description": "Cada pieza de Krafted viene con una garantía de 10 años, lo que refleja nuestra confianza en la calidad duradera."
+            }
+        }
+    },
+    "stats": {
+        "experience": "Años de Experiencia",
+        "customers": "Clientes Felices",
+        "designs": "Diseños Únicos",
+        "satisfaction": "Tasa de Satisfacción"
+    },
+    "cta": {
+        "title": "¿Listo para Transformar tu Espacio?",
+        "description": "Explore nuestra colección seleccionada de muebles hechos a mano y encuentre piezas que hablen a su alma.",
+        "shop": "Ver Colección",
+        "contact": "Contáctenos"
+    }
+}

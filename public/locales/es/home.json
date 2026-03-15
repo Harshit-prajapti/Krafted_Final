@@ -1,0 +1,45 @@
+{
+    "hero": {
+        "heading": "Muebles de lujo hechos a mano",
+        "heading_part1": "Creando Confort",
+        "heading_part2": "En Arte",
+        "tagline": "Experimente el epítome del lujo con Krafted Furniture. Diseños premium hechos a mano para su hogar sofisticado.",
+        "description": "Transforme su espacio vital con elegancia atemporal y artesanía incomparable",
+        "timelessElegance": "Elegancia Atemporal",
+        "scrollToExplore": "Desplazarse para Explorar",
+        "ourStory": "Nuestra Historia",
+        "cta": {
+            "shop": "Ver Colección",
+            "explore": "Explorar Categorías"
+        }
+    },
+    "sections": {
+        "featuredCategories": "Categorías Destacadas",
+        "bestSellers": "Más Vendidos",
+        "bestSellersDesc": "Nuestras piezas más codiciadas, amadas por su diseño atemporal y artesanía excepcional.",
+        "newArrivals": "Novedades",
+        "newArrivalsDesc": "Descubra nuestras últimas incorporaciones, seleccionadas para gustos exigentes.",
+        "trendingNow": "Tendencias",
+        "trendingNowDesc": "Descubra lo más popular esta temporada con nuestra colección de muebles en tendencia.",
+        "whyChooseUs": "Por Qué Elegirnos",
+        "testimonials": "Lo Que Dicen Nuestros Clientes"
+    },
+    "features": {
+        "quality": {
+            "title": "Calidad Premium",
+            "description": "Hecho a mano con los mejores materiales"
+        },
+        "delivery": {
+            "title": "Envío Gratuito",
+            "description": "Envío gratuito en todos los pedidos"
+        },
+        "warranty": {
+            "title": "Garantía de Por Vida",
+            "description": "Calidad garantizada de por vida"
+        },
+        "support": {
+            "title": "Soporte 24/7",
+            "description": "Equipo de atención al cliente dedicado"
+        }
+    }
+}

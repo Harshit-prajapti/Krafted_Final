@@ -1,0 +1,26 @@
+{
+    "details": "Détails du Produit",
+    "specifications": "Spécifications",
+    "reviews": "Avis",
+    "relatedProducts": "Produits Connexes",
+    "addToCart": "Ajouter au Panier",
+    "buyNow": "Acheter Maintenant",
+    "outOfStock": "En Rupture de Stock",
+    "inStock": "En Stock",
+    "selectColor": "Choisir la Couleur",
+    "selectQuantity": "Choisir la Quantité",
+    "names": {
+        "royalThroneSofa": "Canapé Trône en Velours Royal",
+        "victorianGoldSofa": "Canapé à Bordure Dorée Victorienne",
+        "imperialMahoganyTable": "Table à Manger Impériale en Acajou",
+        "baroqueDiningChair": "Chaise à Manger Sculptée Baroque",
+        "regalWingbackChair": "Fauteuil à Oreilles Capitonné Regal",
+        "chesterfieldSofa": "Canapé Chesterfield en Cuir Classique",
+        "royalCanopyBed": "Lit King à Baldaquin Royal",
+        "palaceBedFrame": "Cadre de Lit de Palais Sculpté à la Main",
+        "royalCoffeeTable": "Table Basse Royale à Plateau en Marbre",
+        "goldAccentConsole": "Console à Accents d'Or Antique",
+        "royalOttoman": "Pouf Rembourré Royal",
+        "palaceSideTable": "Table de Chevet de Palais de Luxe"
+    }
+}

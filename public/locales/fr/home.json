@@ -1,0 +1,45 @@
+{
+    "hero": {
+        "heading": "Meubles de luxe fabriqués à la main",
+        "heading_part1": "Créer le Confort",
+        "heading_part2": "En Art",
+        "tagline": "Découvrez le summum du luxe avec Krafted Furniture. Des designs haut de gamme faits à la main pour votre maison sophistiquée.",
+        "description": "Transformez votre espace de vie avec une élégance intemporelle et un savoir-faire inégalé",
+        "timelessElegance": "Élégance Intemporelle",
+        "scrollToExplore": "Défiler pour Explorer",
+        "ourStory": "Notre Histoire",
+        "cta": {
+            "shop": "Voir la Collection",
+            "explore": "Explorer les Catégories"
+        }
+    },
+    "sections": {
+        "featuredCategories": "Catégories en Vedette",
+        "bestSellers": "Meilleures Ventes",
+        "bestSellersDesc": "Nos pièces les plus convoitées, appréciées pour leur design intemporel et leur artisanat exceptionnel.",
+        "newArrivals": "Nouveautés",
+        "newArrivalsDesc": "Découvrez nos dernières créations, sélectionnées pour les goûts les plus exigeants.",
+        "trendingNow": "Tendances",
+        "trendingNowDesc": "Découvrez ce qui est populaire cette saison avec notre collection de meubles tendance.",
+        "whyChooseUs": "Pourquoi Nous Choisir",
+        "testimonials": "Ce Que Disent Nos Clients"
+    },
+    "features": {
+        "quality": {
+            "title": "Qualité Premium",
+            "description": "Fabriqué à la main avec les meilleurs matériaux"
+        },
+        "delivery": {
+            "title": "Livraison Gratuite",
+            "description": "Livraison gratuite sur toutes les commandes"
+        },
+        "warranty": {
+            "title": "Garantie à Vie",
+            "description": "Qualité garantie à vie"
+        },
+        "support": {
+            "title": "Support 24/7",
+            "description": "Équipe de service client dédiée"
+        }
+    }
+}

@@ -1,0 +1,77 @@
+{
+    "header": {
+        "badge": "Ponte en contacto",
+        "title": "Contáctenos",
+        "tagline": "¿Tiene preguntas sobre nuestros muebles o necesita ayuda? Nos encantaría saber de usted."
+    },
+    "form": {
+        "title": "Envíanos un Mensaje",
+        "fullName": "Nombre completo *",
+        "email": "Correo electrónico *",
+        "phone": "Número de teléfono",
+        "subject": "Asunto *",
+        "message": "Mensaje *",
+        "placeholder": {
+            "name": "Juan Pérez",
+            "email": "juan@example.com",
+            "phone": "+91 12345 67890",
+            "message": "¿Cómo podemos ayudarte?",
+            "subject": "Seleccione un asunto"
+        },
+        "subjects": {
+            "product": "Consulta de producto",
+            "order": "Estado del pedido",
+            "custom": "Pedido personalizado",
+            "support": "Atención al cliente",
+            "feedback": "Comentarios",
+            "other": "Otro"
+        },
+        "submit": "Enviar mensaje",
+        "sending": "Enviando...",
+        "success": {
+            "title": "¡Mensaje enviado!",
+            "message": "Nos pondremos en contacto contigo en un plazo de 24 horas."
+        }
+    },
+    "info": {
+        "showroom": {
+            "title": "Visite nuestro showroom",
+            "address": [
+                "123 Furniture Avenue",
+                "Distrito de Diseño, Mumbai 400001",
+                "India"
+            ]
+        },
+        "call": "Llámenos",
+        "email": "Envíenos un correo electrónico",
+        "hours": {
+            "title": "Horario comercial",
+            "weekdays": "Lun - Sáb: 10:00 AM - 8:00 PM",
+            "sunday": "Domingo: 11:00 AM - 6:00 PM"
+        }
+    },
+    "advisory": {
+        "badge": "Servicio Premium",
+        "title": "Asesoría Real de Compras",
+        "tagline": "Obtenga orientación personalizada de nuestros expertos para encontrar los muebles perfectos para su espacio.",
+        "roles": {
+            "seniorPurchase": "Asesor Senior de Compras",
+            "luxurySpecialist": "Especialista en Colecciones de Lujo"
+        },
+        "whatsapp": "Chatear por WhatsApp"
+    },
+    "interior": {
+        "badge": "Orientación Experta",
+        "title": "Asesores de Diseño de Interiores",
+        "tagline": "Nuestros expertos en diseño de interiores le ayudarán a crear el espacio perfecto con una cuidada selección de muebles.",
+        "roles": {
+            "leadDesigner": "Diseñador de Interiores Principal",
+            "consultant": "Consultor de Diseño de Interiores"
+        },
+        "specialties": {
+            "modern": "Espacios Modernos y Contemporáneos",
+            "classic": "Interiores Clásicos y Tradicionales"
+        }
+    },
+    "map": "Mapa interactivo"
+}

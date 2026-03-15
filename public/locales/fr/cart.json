@@ -1,0 +1,42 @@
+{
+    "title": "Votre Panier",
+    "subtitle": "Vérifiez vos articles avant de payer",
+    "badge": "Achats",
+    "empty": {
+        "title": "Votre panier est vide",
+        "tagline": "Découvrez notre collection de meubles haut de gamme et trouvez des pièces qui vous inspirent.",
+        "explore": "Explorer la Collection"
+    },
+    "items": "articles",
+    "item": "article",
+    "readyForCheckout": "prêt pour le paiement",
+    "continueShopping": "Continuer les Achats",
+    "freeShippingAll": "Livraison gratuite sur toutes les commandes",
+    "summary": {
+        "title": "Résumé de la Commande",
+        "subtotal": "Sous-total",
+        "shipping": "Livraison",
+        "freeShipping": "GRATUIT",
+        "tax": "TVA Est. (18% GST)",
+        "total": "Total",
+        "includingTax": "TVA incluse",
+        "secure": "Sécurisé & Chiffré",
+        "weAccept": "Nous Acceptons",
+        "proceedToCheckout": "Passer à la Caisse"
+    },
+    "promo": {
+        "placeholder": "Code promo",
+        "try": "Essayez \"KRAFTED10\" pour 10% de réduction"
+    },
+    "buttons": {
+        "applied": "Appliqué",
+        "apply": "Appliquer"
+    },
+    "labels": {
+        "each": "chaque",
+        "viewMore": "voir plus",
+        "remove": "Supprimer l'article",
+        "decrease": "Diminuer la quantité",
+        "increase": "Augmenter la quantité"
+    }
+}

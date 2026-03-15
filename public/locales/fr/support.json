@@ -1,0 +1,48 @@
+{
+    "faq": {
+        "badge": "Centre d'Aide",
+        "title": "Foire Aux Questions",
+        "tagline": "Trouvez des réponses aux questions courantes sur les commandes, les expéditions, les retours et plus encore.",
+        "searchPlaceholder": "Rechercher des réponses...",
+        "noResults": "Aucune question trouvée correspondant à votre recherche.",
+        "stillQuestions": "Vous avez encore des questions ?",
+        "contactSupport": "Contacter le Support",
+        "categories": {
+            "all": "Toutes les Questions",
+            "orders": "Commandes",
+            "shipping": "Livraison",
+            "returns": "Retours",
+            "payment": "Paiement",
+            "warranty": "Garantie"
+        },
+        "questions": [
+            {
+                "category": "orders",
+                "question": "Comment suivre ma commande ?",
+                "answer": "Une fois votre commande expédiée, vous recevrez un numéro de suivi par e-mail. Vous pouvez utiliser ce numéro pour suivre votre livraison sur notre site web ou sur la page de suivi du transporteur. Vous pouvez également vérifier le statut de la commande dans votre compte sous \"Mes Commandes\"."
+            }
+        ]
+    },
+    "shipping": {
+        "badge": "Infos Livraison",
+        "title": "Expédition & Livraison",
+        "tagline": "Nous apportons un grand soin à la livraison de vos meubles en toute sécurité à votre porte.",
+        "features": {
+            "whiteGlove": {
+                "title": "Livraison Gants Blancs",
+                "description": "Notre équipe livre dans la pièce de votre choix, déballe et assemble vos meubles."
+            }
+        },
+        "zones": {
+            "title": "Zones et Délais de Livraison",
+            "deliveryTime": "Délai de Livraison",
+            "shippingCost": "Frais de Livraison"
+        }
+    },
+    "terms": {
+        "badge": "Juridique",
+        "title": "Conditions Générales",
+        "lastUpdated": "Dernière mise à jour : Janvier 2026",
+        "toc": "Table des Matières"
+    }
+}

@@ -1,0 +1,41 @@
+{
+    "titles": {
+        "profile": "Mon profil",
+        "orders": "Historique des commandes",
+        "settings": "Paramètres du compte",
+        "addresses": "Adresses enregistrées",
+        "wishlist": "Ma liste de souhaits"
+    },
+    "personalInfo": {
+        "title": "Informations personnelles",
+        "name": "Nom complet",
+        "email": "Adresse e-mail",
+        "phone": "Numéro de téléphone",
+        "update": "Mettre à jour le profil"
+    },
+    "orders": {
+        "orderNumber": "Commande #",
+        "date": "Date",
+        "status": "Statut",
+        "total": "Total",
+        "actions": "Actions",
+        "viewOrder": "Voir la commande",
+        "trackOrder": "Suivre la commande",
+        "noOrders": "Aucune commande trouvée"
+    },
+    "addresses": {
+        "addNew": "Ajouter une nouvelle adresse",
+        "default": "Défaut",
+        "edit": "Modifier",
+        "delete": "Supprimer",
+        "noAddresses": "Aucune adresse enregistrée"
+    },
+    "settings": {
+        "changePassword": "Changer le mot de passe",
+        "currentPassword": "Mot de passe actuel",
+        "newPassword": "Nouveau mot de passe",
+        "confirmNewPassword": "Confirmer le nouveau mot de passe",
+        "notifications": "Notifications",
+        "emailNotifications": "Notifications par e-mail"
+    }
+}

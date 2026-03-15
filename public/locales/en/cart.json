@@ -1,0 +1,42 @@
+{
+    "title": "Your Cart",
+    "subtitle": "Review your items before checkout",
+    "badge": "Shopping",
+    "empty": {
+        "title": "Your cart is empty",
+        "tagline": "Discover our collection of premium furniture and find pieces that inspire you.",
+        "explore": "Explore Collection"
+    },
+    "items": "items",
+    "item": "item",
+    "readyForCheckout": "ready for checkout",
+    "continueShopping": "Continue Shopping",
+    "freeShippingAll": "Free shipping on all orders",
+    "summary": {
+        "title": "Order Summary",
+        "subtotal": "Subtotal",
+        "shipping": "Shipping",
+        "freeShipping": "FREE",
+        "tax": "Est. Tax (18% GST)",
+        "total": "Total",
+        "includingTax": "Including GST",
+        "secure": "Secure & Encrypted",
+        "weAccept": "We Accept",
+        "proceedToCheckout": "Proceed to Checkout"
+    },
+    "promo": {
+        "placeholder": "Promo code",
+        "try": "Try \"KRAFTED10\" for 10% off"
+    },
+    "buttons": {
+        "applied": "Applied",
+        "apply": "Apply"
+    },
+    "labels": {
+        "each": "each",
+        "viewMore": "view more",
+        "remove": "Remove item",
+        "decrease": "Decrease quantity",
+        "increase": "Increase quantity"
+    }
+}

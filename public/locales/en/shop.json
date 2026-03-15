@@ -1,0 +1,15 @@
+{
+    "filters": {
+        "title": "Filters",
+        "clearFilters": "Clear All",
+        "categories": "Category",
+        "color": "Color",
+        "material": "Material",
+        "priceRange": "Price Range",
+        "min": "Min",
+        "max": "Max"
+    },
+    "buttons": {
+        "apply": "Apply Price Filter"
+    }
+}

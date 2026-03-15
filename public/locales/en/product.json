@@ -1,0 +1,26 @@
+{
+    "details": "Product Details",
+    "specifications": "Specifications",
+    "reviews": "Reviews",
+    "relatedProducts": "Related Products",
+    "addToCart": "Add to Cart",
+    "buyNow": "Buy Now",
+    "outOfStock": "Out of Stock",
+    "inStock": "In Stock",
+    "selectColor": "Select Color",
+    "selectQuantity": "Select Quantity",
+    "names": {
+        "royalThroneSofa": "Royal Velvet Throne Sofa",
+        "victorianGoldSofa": "Victorian Gold Trim Sofa",
+        "imperialMahoganyTable": "Imperial Mahogany Dining Table",
+        "baroqueDiningChair": "Baroque Carved Dining Chair",
+        "regalWingbackChair": "Regal Tufted Wingback Chair",
+        "chesterfieldSofa": "Classic Leather Chesterfield",
+        "royalCanopyBed": "Royal Canopy King Bed",
+        "palaceBedFrame": "Hand-Carved Palace Bed Frame",
+        "royalCoffeeTable": "Marble Top Royal Coffee Table",
+        "goldAccentConsole": "Antique Gold Accent Console",
+        "royalOttoman": "Royal Upholstered Ottoman",
+        "palaceSideTable": "Luxury Palace Side Table"
+    }
+}

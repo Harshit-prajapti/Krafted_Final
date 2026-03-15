@@ -1,0 +1,28 @@
+{
+    "title": "Acheter des meubles de luxe",
+    "filters": {
+        "title": "Filtres",
+        "categories": "Catégories",
+        "priceRange": "Gamme de prix",
+        "color": "Couleur",
+        "material": "Matériau",
+        "inStock": "En stock uniquement",
+        "onSale": "En promotion",
+        "clearFilters": "Effacer les filtres"
+    },
+    "sort": {
+        "label": "Trier par",
+        "featured": "En vedette",
+        "priceLowToHigh": "Prix : bas à élevé",
+        "priceHighToLow": "Prix : élevé à bas",
+        "newest": "Plus récent",
+        "bestSelling": "Meilleures ventes",
+        "topRated": "Mieux notés"
+    },
+    "results": {
+        "showing": "Affichage",
+        "of": "de",
+        "products": "produits",
+        "noProducts": "Aucun produit trouvé correspondant à vos critères"
+    }
+}

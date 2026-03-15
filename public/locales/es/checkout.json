@@ -1,0 +1,42 @@
+{
+    "title": "Pago",
+    "steps": {
+        "shipping": "Envío",
+        "payment": "Pago",
+        "review": "Revisión"
+    },
+    "shippingAddress": {
+        "title": "Dirección de envío",
+        "fullName": "Nombre completo",
+        "phone": "Número de teléfono",
+        "address": "Dirección",
+        "city": "Ciudad",
+        "state": "Estado/Provincia",
+        "zipCode": "Código postal",
+        "country": "País",
+        "saveAddress": "Guardar esta dirección"
+    },
+    "payment": {
+        "title": "Método de pago",
+        "creditCard": "Tarjeta de crédito/débito",
+        "upi": "UPI",
+        "netBanking": "Banca en línea",
+        "cashOnDelivery": "Pago contra entrega",
+        "cardNumber": "Número de tarjeta",
+        "expiryDate": "Fecha de vencimiento",
+        "cvv": "CVV",
+        "cardholderName": "Nombre del titular"
+    },
+    "review": {
+        "title": "Revise su pedido",
+        "items": "Artículos",
+        "shippingTo": "Envío a",
+        "paymentMethod": "Método de pago",
+        "placeOrder": "Realizar pedido",
+        "processingFee": "Tarifa de procesamiento"
+    },
+    "messages": {
+        "orderPlaced": "¡Pedido realizado con éxito!",
+        "orderFailed": "Error al realizar el pedido. Inténtelo de nuevo."
+    }
+}

@@ -1,0 +1,42 @@
+{
+    "title": "Paiement",
+    "steps": {
+        "shipping": "Livraison",
+        "payment": "Paiement",
+        "review": "Révision"
+    },
+    "shippingAddress": {
+        "title": "Adresse de livraison",
+        "fullName": "Nom complet",
+        "phone": "Numéro de téléphone",
+        "address": "Adresse",
+        "city": "Ville",
+        "state": "État/Province",
+        "zipCode": "Code postal",
+        "country": "Pays",
+        "saveAddress": "Enregistrer cette adresse"
+    },
+    "payment": {
+        "title": "Mode de paiement",
+        "creditCard": "Carte de crédit/débit",
+        "upi": "UPI",
+        "netBanking": "Banque en ligne",
+        "cashOnDelivery": "Paiement à la livraison",
+        "cardNumber": "Numéro de carte",
+        "expiryDate": "Date d'expiration",
+        "cvv": "CVV",
+        "cardholderName": "Nom du titulaire"
+    },
+    "review": {
+        "title": "Vérifiez votre commande",
+        "items": "Articles",
+        "shippingTo": "Livraison à",
+        "paymentMethod": "Mode de paiement",
+        "placeOrder": "Passer la commande",
+        "processingFee": "Frais de traitement"
+    },
+    "messages": {
+        "orderPlaced": "Commande passée avec succès !",
+        "orderFailed": "Échec de la commande. Veuillez réessayer."
+    }
+}

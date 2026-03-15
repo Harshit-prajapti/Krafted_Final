@@ -1,0 +1,171 @@
+﻿
+> krafted-furniture@0.1.0 build
+> next build
+
+node.exe : [baseline-browser-mapping] The data in this 
+module is over two months old.  To ensure accurate Baseline 
+data, please update: `npm i baseline-browser-mapping@latest 
+-D`
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([baseline-brows 
+   ...ping@latest -D`:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+   Γû▓ Next.js 16.0.11 (Turbopack)
+   - Environments: .env
+
+ ΓÜá The "middleware" file convention is deprecated. Please 
+use "proxy" instead. Learn more: 
+https://nextjs.org/docs/messages/middleware-to-proxy
+   Creating an optimized production build ...
+[baseline-browser-mapping] The data in this module is over 
+two months old.  To ensure accurate Baseline data, please 
+update: `npm i baseline-browser-mapping@latest -D`
+ Γ£ô Compiled successfully in 27.2s
+   Running TypeScript ...
+   Collecting page data using 7 workers ...
+[baseline-browser-mapping] The data in this module is over 
+two months old.  To ensure accurate Baseline data, please 
+update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over 
+two months old.  To ensure accurate Baseline data, please 
+update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over 
+two months old.  To ensure accurate Baseline data, please 
+update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over 
+two months old.  To ensure accurate Baseline data, please 
+update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over 
+two months old.  To ensure accurate Baseline data, please 
+update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over 
+two months old.  To ensure accurate Baseline data, please 
+update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over 
+two months old.  To ensure accurate Baseline data, please 
+update: `npm i baseline-browser-mapping@latest -D`
+   Generating static pages using 7 workers (0/66) ...
+[baseline-browser-mapping] The data in this module is over 
+two months old.  To ensure accurate Baseline data, please 
+update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over 
+two months old.  To ensure accurate Baseline data, please 
+update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over 
+two months old.  To ensure accurate Baseline data, please 
+update: `npm i baseline-browser-mapping@latest -D`
+   Generating static pages using 7 workers (16/66) 
+≡ƒîÉ i18next is maintained with support from locize.com ΓÇö consider powering your project with managed localization (AI, CDN, integrations): https://locize.com ≡ƒÆÖ
+≡ƒîÉ i18next is maintained with support from locize.com ΓÇö consider powering your project with managed localization (AI, CDN, integrations): https://locize.com ≡ƒÆÖ
+≡ƒîÉ i18next is maintained with support from locize.com ΓÇö consider powering your project with managed localization (AI, CDN, integrations): https://locize.com ≡ƒÆÖ
+   Generating static pages using 7 workers (32/66) 
+   Generating static pages using 7 workers (49/66) 
+ Γ£ô Generating static pages using 7 workers (66/66) in 4.5s
+   Finalizing page optimization ...
+
+Route (app)
+Γöî Γùï /
+Γö£ Γùï /_not-found
+Γö£ Γùï /about
+Γö£ ╞Æ /admin
+Γö£ ╞Æ /admin/categories
+Γö£ ╞Æ /admin/categories/add
+Γö£ ╞Æ /admin/orders
+Γö£ ╞Æ /admin/orders/track/[id]
+Γö£ ╞Æ /admin/payments
+Γö£ Γùï /admin/performance
+Γö£ ╞Æ /admin/products
+Γö£ ╞Æ /admin/products/[id]/edit
+Γö£ ╞Æ /admin/products/add
+Γö£ Γùï /admin/reports
+Γö£ ╞Æ /admin/users
+Γö£ ╞Æ /api/admin/analytics
+Γö£ ╞Æ /api/admin/categories/top
+Γö£ ╞Æ /api/admin/notifications
+Γö£ ╞Æ /api/admin/orders
+Γö£ ╞Æ /api/admin/orders/search
+Γö£ ╞Æ /api/admin/payments/failed
+Γö£ ╞Æ /api/admin/reports
+Γö£ ╞Æ /api/admin/sales-chart
+Γö£ ╞Æ /api/admin/stats
+Γö£ ╞Æ /api/auth/[...nextauth]
+Γö£ ╞Æ /api/auth/forgot-password
+Γö£ ╞Æ /api/auth/register
+Γö£ ╞Æ /api/auth/reset-password
+Γö£ ╞Æ /api/auth/validate-reset-token
+Γö£ ╞Æ /api/cart
+Γö£ ╞Æ /api/cart/[itemId]
+Γö£ ╞Æ /api/cart/count
+Γö£ ╞Æ /api/categories
+Γö£ ╞Æ /api/categories/[slug]
+Γö£ ╞Æ /api/categories/add
+Γö£ ╞Æ /api/colors
+Γö£ ╞Æ /api/colors/[id]
+Γö£ ╞Æ /api/images/add
+Γö£ ╞Æ /api/orders
+Γö£ ╞Æ /api/orders/[id]
+Γö£ ╞Æ /api/orders/[id]/cancel
+Γö£ ╞Æ /api/payments
+Γö£ ╞Æ /api/payments/verify
+Γö£ ╞Æ /api/payments/webhook/razorpay
+Γö£ ╞Æ /api/payments/webhook/stripe
+Γö£ ╞Æ /api/products
+Γö£ ╞Æ /api/products/[id]
+Γö£ ╞Æ /api/products/[id]/reviews
+Γö£ ╞Æ /api/products/add
+Γö£ ╞Æ /api/products/featured
+Γö£ ╞Æ /api/products/new-arrivals
+Γö£ ╞Æ /api/products/related
+Γö£ ╞Æ /api/products/search
+Γö£ ╞Æ /api/products/search/[slug]
+Γö£ ╞Æ /api/reviews/[id]
+Γö£ ╞Æ /api/test
+Γö£ ╞Æ /api/upload
+Γö£ ╞Æ /api/users
+Γö£ ╞Æ /api/users/addresses
+Γö£ ╞Æ /api/users/addresses/[id]
+Γö£ ╞Æ /api/users/profile
+Γö£ ╞Æ /api/users/register
+Γö£ ╞Æ /api/wishlist
+Γö£ ╞Æ /api/wishlist/[productId]
+Γö£ Γùï /auth/error
+Γö£ Γùï /auth/forgot-password
+Γö£ Γùï /auth/reset-password
+Γö£ Γùï /auth/success
+Γö£ ╞Æ /cart
+Γö£ ╞Æ /categories
+Γö£ ╞Æ /categories/[slug]
+Γö£ ╞Æ /checkout
+Γö£ Γùï /checkout/address/add
+Γö£ ╞Æ /checkout/failed
+Γö£ ╞Æ /checkout/success
+Γö£ Γùï /contact
+Γö£ Γùï /faq
+Γö£ Γùï /product
+Γö£ ╞Æ /product/[slug]
+Γö£ ╞Æ /profile
+Γö£ ╞Æ /profile/addresses/add
+Γö£ ╞Æ /profile/orders
+Γö£ ╞Æ /profile/orders/[id]
+Γö£ Γùï /profile/settings
+Γö£ ╞Æ /sale
+Γö£ Γùï /search
+Γö£ Γùï /search/results
+Γö£ Γùï /shipping
+Γö£ ╞Æ /shop
+Γö£ Γùï /terms
+Γö£ Γùï /user/login
+Γö£ Γùï /user/register
+Γöö ╞Æ /wishlist
+
+
+╞Æ Proxy (Middleware)
+
+Γùï  (Static)   prerendered as static content
+╞Æ  (Dynamic)  server-rendered on demand
+

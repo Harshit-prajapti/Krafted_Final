@@ -1,0 +1,41 @@
+{
+    "titles": {
+        "profile": "My Profile",
+        "orders": "Order History",
+        "settings": "Account Settings",
+        "addresses": "Saved Addresses",
+        "wishlist": "My Wishlist"
+    },
+    "personalInfo": {
+        "title": "Personal Information",
+        "name": "Full Name",
+        "email": "Email Address",
+        "phone": "Phone Number",
+        "update": "Update Profile"
+    },
+    "orders": {
+        "orderNumber": "Order #",
+        "date": "Date",
+        "status": "Status",
+        "total": "Total",
+        "actions": "Actions",
+        "viewOrder": "View Order",
+        "trackOrder": "Track Order",
+        "noOrders": "No orders found"
+    },
+    "addresses": {
+        "addNew": "Add New Address",
+        "default": "Default",
+        "edit": "Edit",
+        "delete": "Delete",
+        "noAddresses": "No saved addresses"
+    },
+    "settings": {
+        "changePassword": "Change Password",
+        "currentPassword": "Current Password",
+        "newPassword": "New Password",
+        "confirmNewPassword": "Confirm New Password",
+        "notifications": "Notifications",
+        "emailNotifications": "Email Notifications"
+    }
+}

@@ -1,0 +1,77 @@
+{
+    "header": {
+        "badge": "Entrer en contact",
+        "title": "Contactez-nous",
+        "tagline": "Vous avez des questions sur nos meubles ou besoin d'aide ? Nous aimerions avoir de vos nouvelles."
+    },
+    "form": {
+        "title": "Envoyez-nous un message",
+        "fullName": "Nom complet *",
+        "email": "Adresse e-mail *",
+        "phone": "Numéro de téléphone",
+        "subject": "Sujet *",
+        "message": "Message *",
+        "placeholder": {
+            "name": "John Doe",
+            "email": "john@example.com",
+            "phone": "+91 12345 67890",
+            "message": "Comment pouvons-nous vous aider ?",
+            "subject": "Sélectionnez un sujet"
+        },
+        "subjects": {
+            "product": "Demande de produit",
+            "order": "Statut de la commande",
+            "custom": "Commande personnalisée",
+            "support": "Service client",
+            "feedback": "Commentaires",
+            "other": "Autre"
+        },
+        "submit": "Envoyer le message",
+        "sending": "Envoi en cours...",
+        "success": {
+            "title": "Message envoyé !",
+            "message": "Nous vous répondrons dans les 24 heures."
+        }
+    },
+    "info": {
+        "showroom": {
+            "title": "Visitez notre salle d'exposition",
+            "address": [
+                "123 Furniture Avenue",
+                "Quartier du design, Mumbai 400001",
+                "Inde"
+            ]
+        },
+        "call": "Appelez-nous",
+        "email": "Envoyez-nous un e-mail",
+        "hours": {
+            "title": "Heures d'ouverture",
+            "weekdays": "Lun - Sam : 10h00 - 20h00",
+            "sunday": "Dimanche : 11h00 - 18h00"
+        }
+    },
+    "advisory": {
+        "badge": "Service Premium",
+        "title": "Conseil Royal en Achat",
+        "tagline": "Obtenez des conseils personnalisés de nos experts pour trouver le meuble idéal pour votre espace.",
+        "roles": {
+            "seniorPurchase": "Conseiller Principal en Achat",
+            "luxurySpecialist": "Spécialiste de la Collection de Luxe"
+        },
+        "whatsapp": "Chatter sur WhatsApp"
+    },
+    "interior": {
+        "badge": "Conseils d'experts",
+        "title": "Conseillers en Design d'Intérieur",
+        "tagline": "Nos experts en design d'intérieur vous aideront à créer l'espace parfait avec une sélection de meubles choisis.",
+        "roles": {
+            "leadDesigner": "Directeur du Design d'Intérieur",
+            "consultant": "Consultant en Design d'Intérieur"
+        },
+        "specialties": {
+            "modern": "Espaces Modernes et Contemporains",
+            "classic": "Intérieurs Classiques et Traditionnels"
+        }
+    },
+    "map": "Carte interactive"
+}

@@ -1,0 +1,17 @@
+{
+    "general": {
+        "required": "Este campo es obligatorio",
+        "invalidEmail": "Dirección de correo inválida",
+        "minLength": "Debe tener al menos {{min}} caracteres",
+        "maxLength": "Debe tener como máximo {{max}} caracteres",
+        "passwordMatch": "Las contraseñas no coinciden",
+        "generic": "Algo salió mal. Por favor inténtelo de nuevo."
+    },
+    "api": {
+        "networkError": "Error de red. Por favor verifique su conexión.",
+        "unauthorized": "Acceso no autorizado",
+        "forbidden": "Acceso prohibido",
+        "notFound": "Recurso no encontrado",
+        "serverError": "Error interno del servidor"
+    }
+}

@@ -1,0 +1,77 @@
+{
+    "header": {
+        "badge": "Get in Touch",
+        "title": "Contact Us",
+        "tagline": "Have questions about our furniture or need assistance? We'd love to hear from you."
+    },
+    "form": {
+        "title": "Send us a Message",
+        "fullName": "Full Name *",
+        "email": "Email Address *",
+        "phone": "Phone Number",
+        "subject": "Subject *",
+        "message": "Message *",
+        "placeholder": {
+            "name": "John Doe",
+            "email": "john@example.com",
+            "phone": "+91 12345 67890",
+            "message": "How can we help you?",
+            "subject": "Select a subject"
+        },
+        "subjects": {
+            "product": "Product Inquiry",
+            "order": "Order Status",
+            "custom": "Custom Order",
+            "support": "Customer Support",
+            "feedback": "Feedback",
+            "other": "Other"
+        },
+        "submit": "Send Message",
+        "sending": "Sending...",
+        "success": {
+            "title": "Message Sent!",
+            "message": "We'll get back to you within 24 hours."
+        }
+    },
+    "info": {
+        "showroom": {
+            "title": "Visit Our Showroom",
+            "address": [
+                "123 Furniture Avenue",
+                "Design District, Mumbai 400001",
+                "India"
+            ]
+        },
+        "call": "Call Us",
+        "email": "Email Us",
+        "hours": {
+            "title": "Business Hours",
+            "weekdays": "Mon - Sat: 10:00 AM - 8:00 PM",
+            "sunday": "Sunday: 11:00 AM - 6:00 PM"
+        }
+    },
+    "advisory": {
+        "badge": "Premium Service",
+        "title": "Royal Purchase Advisory",
+        "tagline": "Get personalized guidance from our expert advisors to find the perfect furniture for your space.",
+        "roles": {
+            "seniorPurchase": "Senior Purchase Advisor",
+            "luxurySpecialist": "Luxury Collection Specialist"
+        },
+        "whatsapp": "Chat on WhatsApp"
+    },
+    "interior": {
+        "badge": "Expert Guidance",
+        "title": "Interior Design Advisors",
+        "tagline": "Our interior design experts will help you create the perfect space with curated furniture selections.",
+        "roles": {
+            "leadDesigner": "Lead Interior Designer",
+            "consultant": "Interior Design Consultant"
+        },
+        "specialties": {
+            "modern": "Modern & Contemporary Spaces",
+            "classic": "Classic & Traditional Interiors"
+        }
+    },
+    "map": "Interactive Map"
+}
