@@ -9,103 +9,105 @@ import { useAddToCart } from '@/lib/hooks/useAddToCart'
 import { Loader2, Zap } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 
+const IMAGE_BASE_URL = 'https://pub-6373be2f34c246649e921d2bef6e47c1.r2.dev';
+
 const BEST_SELLERS = [
-    {
-        id: '1',
-        name: 'Royal Velvet Throne Sofa',
-        price: 5200,
-        image: 'https://images.unsplash.com/photo-1615874959474-d609969a20ed?q=80&w=1000&auto=format&fit=crop',
-        category: 'Living Room',
-        slug: 'royal-throne-sofa'
-    },
-    {
-        id: '2',
-        name: 'Victorian Gold Trim Sofa',
-        price: 4800,
-        image: 'https://images.unsplash.com/photo-1617103996702-96ff29b1c467?q=80&w=1000&auto=format&fit=crop',
-        category: 'Living Room',
-        slug: 'victorian-gold-sofa'
-    },
-    {
-        id: '3',
-        name: 'Imperial Mahogany Dining Table',
-        price: 6200,
-        image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop',
-        category: 'Dining',
-        slug: 'imperial-mahogany-table'
-    },
-    {
-        id: '4',
-        name: 'Baroque Carved Dining Chair',
-        price: 1350,
-        image: 'https://images.unsplash.com/photo-1615873968403-89e068629265?q=80&w=1000&auto=format&fit=crop',
-        category: 'Dining',
-        slug: 'baroque-dining-chair'
-    },
-    {
-        id: '5',
-        name: 'Regal Tufted Wingback Chair',
-        price: 1750,
-        image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=1000&auto=format&fit=crop',
-        category: 'Armchairs',
-        slug: 'regal-wingback-chair'
-    },
-    {
-        id: '6',
-        name: 'Classic Leather Chesterfield',
-        price: 4100,
-        image: 'https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?q=80&w=1000&auto=format&fit=crop',
-        category: 'Living Room',
-        slug: 'chesterfield-sofa'
-    },
-    {
-        id: '7',
-        name: 'Royal Canopy King Bed',
-        price: 7500,
-        image: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?q=80&w=1000&auto=format&fit=crop',
-        category: 'Bedroom',
-        slug: 'royal-canopy-bed'
-    },
-    {
-        id: '8',
-        name: 'Hand-Carved Palace Bed Frame',
-        price: 6900,
-        image: '/images/available dinning diffrent colour.png',
-        category: 'Bedroom',
-        slug: 'palace-bed-frame'
-    },
-    {
-        id: '9',
-        name: 'Marble Top Royal Coffee Table',
-        price: 2100,
-        image: 'https://images.pexels.com/photos/3773570/pexels-photo-3773570.png',
-        category: 'Living Room',
-        slug: 'royal-coffee-table'
-    },
-    {
-        id: '10',
-        name: 'Antique Gold Accent Console',
-        price: 2950,
-        image: 'https://images.pexels.com/photos/6538945/pexels-photo-6538945.jpeg',
-        category: 'Decor',
-        slug: 'gold-accent-console'
-    },
-    {
-        id: '11',
-        name: 'Royal Upholstered Ottoman',
-        price: 980,
-        image: 'https://images.pexels.com/photos/6969866/pexels-photo-6969866.jpeg',
-        category: 'Living Room',
-        slug: 'royal-ottoman'
-    },
-    {
-        id: '12',
-        name: 'Luxury Palace Side Table',
-        price: 1650,
-        image: 'https://images.pexels.com/photos/7031737/pexels-photo-7031737.jpeg',
-        category: 'Bedroom',
-        slug: 'palace-side-table'
-    }
+  {
+    id: '1',
+    name: 'Baroque Gold Armchair',
+    price: 62000,
+    image: `${IMAGE_BASE_URL}/ac_baroque_gold.png`,
+    category: 'Armchairs',
+    slug: 'baroque-gold-armchair'
+  },
+  { 
+    id: '2',
+    name: 'Baroque Teal Armchair',
+    price: 59500,
+    image: `${IMAGE_BASE_URL}/ac_baroque_teal.png`,
+    category: 'Armchairs',
+    slug: 'baroque-teal-armchair'
+  },
+  {
+    id: '3',
+    name: 'Mint White Sofa',
+    price: 62000,
+    image: `${IMAGE_BASE_URL}/sf_mint_white.png`,
+    category: 'Sofas',
+    slug: 'mint-white-sofa'
+  },
+  {
+    id: '4',
+    name: 'Opulent Baroque Armchair',
+    price: 85000,
+    image: `${IMAGE_BASE_URL}/Opulent baroque armchair in grand library.png`,
+    category: 'Armchairs',
+    slug: 'opulent-baroque-armchair'
+  },
+  {
+    id: '5',
+    name: 'Ivory Chesterfield Sofa',
+    price: 89999,
+    image: `${IMAGE_BASE_URL}/sf_ivory_chesterfield.png`,
+    category: 'Sofas',
+    slug: 'ivory-chesterfield-sofa'
+  },
+  {
+    id: '6',
+    name: 'Classic Rocking Chair',
+    price: 28000,
+    image: `${IMAGE_BASE_URL}/rocking chair.png`,
+    category: 'Rocking Chairs',
+    slug: 'classic-rocking-chair'
+  },
+  {
+    id: '7',
+    name: 'Royal Blue Carved Sofa',
+    price: 135000,
+    image: `${IMAGE_BASE_URL}/sf_royal_blue_carved.png`,
+    category: 'Sofas',
+    slug: 'royal-blue-carved-sofa'
+  },
+  {
+    id: '8',
+    name: 'Baroque Cream Armchair',
+    price: 55000,
+    image: `${IMAGE_BASE_URL}/ac_baroque_cream.png`,
+    category: 'Armchairs',
+    slug: 'baroque-cream-armchair'
+  },
+  {
+    id: '9',
+    name: 'Carved Wood Rocking Chair',
+    price: 32000,
+    image: `${IMAGE_BASE_URL}/rc_carved_wood.png`,
+    category: 'Rocking Chairs',
+    slug: 'carved-wood-rocking-chair'
+  },
+  {
+    id: '10',
+    name: 'Pearl Channel Sofa',
+    price: 95000,
+    image: `${IMAGE_BASE_URL}/sf_pearl_channel.png`,
+    category: 'Sofas',
+    slug: 'pearl-channel-sofa'
+  },
+  {
+    id: '11',
+    name: 'Elegant French Armchair',
+    price: 42000,
+    image: `${IMAGE_BASE_URL}/Elegant French-style armchair in living room.png`,
+    category: 'Armchairs',
+    slug: 'elegant-french-armchair'
+  },
+  { 
+    id: '12',
+    name: 'Emerald Velvet Sofa',
+    price: 83000,
+    image: `${IMAGE_BASE_URL}/sf_emerald.png`,
+    category: 'Sofas',
+    slug: 'emerald-velvet-sofa'
+  }
 ];
 
 

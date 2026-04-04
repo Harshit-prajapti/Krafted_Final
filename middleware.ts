@@ -13,6 +13,7 @@ export async function middleware(request: NextRequest) {
         }
 
         if (token.role !== 'ADMIN') {
+            console.log("I was called");
             return NextResponse.redirect(new URL('/', request.url))
         }
     }

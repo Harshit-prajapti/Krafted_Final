@@ -132,6 +132,6 @@ export interface ProductFilter {
   isActive?: boolean;
   page?: number;
   pageSize?: number;
-  sortBy?: 'price' | 'name' | 'createdAt';
+  sortBy?: 'price' | 'name' | 'createdAt' | 'cartAdds';
   sortOrder?: 'asc' | 'desc';
 }

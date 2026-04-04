@@ -24,7 +24,7 @@ export default function BestSellers() {
     const { data: products = [], isLoading } = useQuery({
         queryKey: ['products', 'best-sellers'],
         queryFn: async () => {
-            const res = await fetch('/api/products?limit=12&sortBy=createdAt&sortOrder=desc')
+            const res = await fetch('/api/products?pageSize=12&sortBy=cartAdds&sortOrder=desc')
             if (!res.ok) throw new Error('Failed to fetch')
             const data = await res.json()
             return data.data || []

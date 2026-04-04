@@ -71,6 +71,12 @@ export async function GET(request: NextRequest) {
             orderBy = { name: sortOrder }
         } else if (sortBy === 'createdAt') {
             orderBy = { createdAt: sortOrder }
+        } else if (sortBy === 'cartAdds') {
+            // Best sellers: products present in the most carts
+            orderBy = [
+                { cartItems: { _count: sortOrder } },
+                { createdAt: 'desc' }
+            ]
         }
 
         // Pagination
