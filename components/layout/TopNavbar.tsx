@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion'
-import { ShoppingBag, Search, Menu, X, User, Facebook, Instagram, Twitter, Linkedin, Mail, Phone, Home, Package, Grid3x3, UserCircle, LogIn, Info, LogOut, Settings, ChevronDown, Heart } from 'lucide-react'
+import { ShoppingBag, Search, Menu, X, User, Facebook, Instagram, Twitter, Linkedin, Mail, Phone, Home, Package, Grid3x3, UserCircle, LogIn, Info, LogOut, Settings, ChevronDown, Heart, Store } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher'
@@ -22,19 +22,19 @@ function TopNavbar() {
 
                     <div className="flex items-center space-x-3 md:space-x-4">
                         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
-                            className="text-amber-400/80 hover:text-amber-300 transition-all hover:scale-110 transform hover:drop-shadow-[0_0_8px_rgba(251,191,36,0.5)]">
+                            className="text-white hover:text-white/70 transition-all hover:scale-110 transform hover:drop-shadow-[0_0_8px_rgba(251,191,36,0.5)]">
                             <Facebook size={20} className="md:w-6 md:h-6" />
                         </a>
                         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
-                            className="text-amber-400/80 hover:text-amber-300 transition-all hover:scale-110 transform hover:drop-shadow-[0_0_8px_rgba(251,191,36,0.5)]">
+                            className="text-white hover:text-white/70 transition-all hover:scale-110 transform hover:drop-shadow-[0_0_8px_rgba(251,191,36,0.5)]">
                             <Instagram size={20} className="md:w-6 md:h-6" />
                         </a>
                         <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
-                            className="hidden sm:block text-amber-400/80 hover:text-amber-300 transition-all hover:scale-110 transform hover:drop-shadow-[0_0_8px_rgba(251,191,36,0.5)]">
+                            className="hidden sm:block text-white hover:text-white/70 transition-all hover:scale-110 transform hover:drop-shadow-[0_0_8px_rgba(251,191,36,0.5)]">
                             <Twitter size={20} className="md:w-6 md:h-6" />
                         </a>
                         <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
-                            className="hidden sm:block text-amber-400/80 hover:text-amber-300 transition-all hover:scale-110 transform hover:drop-shadow-[0_0_8px_rgba(251,191,36,0.5)]">
+                            className="hidden sm:block text-white hover:text-white/70 transition-all hover:scale-110 transform hover:drop-shadow-[0_0_8px_rgba(251,191,36,0.5)]">
                             <Linkedin size={20} className="md:w-6 md:h-6" />
                         </a>
                     </div>
@@ -110,7 +110,7 @@ export default function Navbar() {
         { name: t('nav.about'), href: '/about', icon: Info },
         { name: t('nav.categories'), href: '/categories', icon: Grid3x3 },
         { name: t('nav.profile'), href: '/profile', icon: UserCircle },
-        { name: t('nav.orders'), href: '/profile/orders', icon: Package },
+        { name: t('nav.shop'), href: '/shop', icon: Store },
         { name: t('nav.cart'), href: '/cart', icon: ShoppingBag },
     ]
 
@@ -167,16 +167,36 @@ export default function Navbar() {
                     </button>
 
                     {/* Logo */}
-                    <Link href="/" className="flex flex-col items-center md:items-start group bg-red">
-                        {/* <div className="logo-image">
-                            <img src="https://static.wixstatic.com/media/8266d8_ac4000cf05814069b9c6fa2f72d81a9a~mv2.png/v1/fill/w_338,h_338,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/8266d8_ac4000cf05814069b9c6fa2f72d81a9a~mv2.png" alt="" height={10}/>
-                            </div> */}
-                        <h1 className="text-2xl md:text-3xl font-heading font-bold tracking-wider text-foreground group-hover:text-gold transition-colors">
-                            KRAFTED
+                    <Link href="/" className="flex flex-col items-center group">
+                        {/* Crown + KR Monogram */}
+                        <div className="flex flex-col items-center">
+                            {/* Crown */}
+                            <svg width="28" height="18" viewBox="0 0 28 18" fill="none" xmlns="http://www.w3.org/2000/svg" className="mb-0.5 group-hover:scale-110 transition-transform">
+                                <path d="M14 0L16.5 6L22 3L20 12H8L6 3L11.5 6L14 0Z" fill="#C5A028" />
+                                <rect x="7" y="12" width="14" height="3" rx="0.5" fill="#C5A028" />
+                                <circle cx="10" cy="13.5" r="0.8" fill="#1a1a1a" />
+                                <circle cx="14" cy="13.5" r="0.8" fill="#1a1a1a" />
+                                <circle cx="18" cy="13.5" r="0.8" fill="#1a1a1a" />
+                                <circle cx="14" cy="1" r="1.2" fill="#D4AF37" />
+                                <circle cx="6" cy="3.5" r="1" fill="#D4AF37" />
+                                <circle cx="22" cy="3.5" r="1" fill="#D4AF37" />
+                            </svg>
+                            {/* KR Monogram */}
+                            <div className="flex items-baseline leading-none" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
+                                <span className="text-xl md:text-2xl font-bold text-[#2c2c2c] group-hover:text-[#1a1a1a] transition-colors">K</span>
+                                <span className="text-xl md:text-2xl font-bold text-[#C5A028] group-hover:text-[#D4AF37] transition-colors">R</span>
+                            </div>
+                        </div>
+                        {/* Brand Name */}
+                        <h1 className="text-base md:text-lg font-bold tracking-[0.25em] text-[#2c2c2c] group-hover:text-[#1a1a1a] transition-colors mt-0.5" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
+                            KRAFTED ROYALE
                         </h1>
-                        <span className="text-[0.6rem] uppercase tracking-[0.3em] text-muted-foreground group-hover:text-gold/80 transition-colors">
-                            Furniture
-                        </span>
+                        {/* Divider */}
+                        <div className="w-full max-w-[140px] h-[1px] bg-gradient-to-r from-transparent via-[#C5A028] to-transparent my-0.5" />
+                        {/* Tagline */}
+                        {/* <span className="text-[0.45rem] md:text-[0.5rem] uppercase tracking-[0.25em] text-[#8a7a5a] group-hover:text-[#C5A028] transition-colors">
+                            Interior Execution Specialists
+                        </span> */}
                     </Link>
 
                     {/* Desktop Navigation */}
@@ -311,15 +331,32 @@ export default function Navbar() {
                             <div className="flex flex-col h-full">
                                 {/* Header */}
                                 <div className="flex items-center justify-between p-6 border-b border-gray-200">
-                                    <Link href="/" onClick={() => setMobileMenuOpen(false)}>
-                                        <div className="flex flex-col">
-                                            <h2 className="text-2xl font-heading font-bold tracking-wider text-foreground">
-                                                KRAFTED
-                                            </h2>
-                                            <span className="text-[0.5rem] uppercase tracking-[0.3em] text-muted-foreground">
-                                                Furniture
-                                            </span>
+                                    <Link href="/" onClick={() => setMobileMenuOpen(false)} className="flex flex-col items-center">
+                                        <div className="flex flex-col items-center">
+                                            {/* Crown */}
+                                            <svg width="24" height="16" viewBox="0 0 28 18" fill="none" xmlns="http://www.w3.org/2000/svg" className="mb-0.5">
+                                                <path d="M14 0L16.5 6L22 3L20 12H8L6 3L11.5 6L14 0Z" fill="#C5A028" />
+                                                <rect x="7" y="12" width="14" height="3" rx="0.5" fill="#C5A028" />
+                                                <circle cx="10" cy="13.5" r="0.8" fill="#1a1a1a" />
+                                                <circle cx="14" cy="13.5" r="0.8" fill="#1a1a1a" />
+                                                <circle cx="18" cy="13.5" r="0.8" fill="#1a1a1a" />
+                                                <circle cx="14" cy="1" r="1.2" fill="#D4AF37" />
+                                                <circle cx="6" cy="3.5" r="1" fill="#D4AF37" />
+                                                <circle cx="22" cy="3.5" r="1" fill="#D4AF37" />
+                                            </svg>
+                                            {/* KR Monogram */}
+                                            <div className="flex items-baseline leading-none" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
+                                                <span className="text-xl font-bold text-[#2c2c2c]">K</span>
+                                                <span className="text-xl font-bold text-[#C5A028]">R</span>
+                                            </div>
                                         </div>
+                                        <h2 className="text-sm font-bold tracking-[0.25em] text-[#2c2c2c] mt-0.5" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
+                                            KRAFTED ROYALE
+                                        </h2>
+                                        <div className="w-full max-w-[120px] h-[1px] bg-gradient-to-r from-transparent via-[#C5A028] to-transparent my-0.5" />
+                                        <span className="text-[0.4rem] uppercase tracking-[0.2em] text-[#8a7a5a]">
+                                            Interior Execution Specialists
+                                        </span>
                                     </Link>
                                     <button
                                         onClick={() => setMobileMenuOpen(false)}

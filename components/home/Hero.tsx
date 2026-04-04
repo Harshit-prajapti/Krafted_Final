@@ -1,32 +1,13 @@
 "use client"
 
-import { motion, AnimatePresence, Variants } from 'framer-motion'
+import { motion, Variants } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import { useSession } from 'next-auth/react'
 import { useTranslation } from 'react-i18next'
-import { useState, useEffect, useCallback, useMemo } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import Image from 'next/image'
-const heroImages = [
-    '/images/model.jpeg',
-    '/images/house.jpeg',
-    '/images/house2.jpeg',
-    '/images/house3.jpeg',
-    '/images/house4.jpeg',
-    '/images/house5.jpeg',
-    '/images/house6.jpeg',
-    '/images/house7.jpeg',
-    '/images/house8.jpeg',
-    '/images/house9.jpeg',
-]
 
-const kenBurnsVariants = [
-    { scale: [1, 1.15], x: ['0%', '2%'], y: ['0%', '1%'] },
-    { scale: [1, 1.12], x: ['0%', '-2%'], y: ['0%', '2%'] },
-    { scale: [1.05, 1.15], x: ['-1%', '1%'], y: ['1%', '-1%'] },
-    { scale: [1, 1.1], x: ['1%', '-1%'], y: ['0%', '1%'] },
-    { scale: [1.02, 1.12], x: ['0%', '1.5%'], y: ['-0.5%', '0.5%'] },
-]
+const HERO_IMAGE = 'https://pub-6373be2f34c246649e921d2bef6e47c1.r2.dev/web%20cover%20page%20krafted.png'
 
 function FloatingParticles() {
     const particles = useMemo(() =>
@@ -121,29 +102,13 @@ const buttonVariants: Variants = {
 
 export default function Hero() {
     const { t } = useTranslation('home')
-    const [currentIndex, setCurrentIndex] = useState(0)
     const [isLoaded, setIsLoaded] = useState(false)
     const [isMounted, setIsMounted] = useState(false)
-
-    const nextImage = useCallback(() => {
-        setCurrentIndex((prev) => (prev + 1) % heroImages.length)
-    }, [])
 
     useEffect(() => {
         setIsMounted(true)
         setIsLoaded(true)
-        const interval = setInterval(nextImage, 8000)
-        return () => clearInterval(interval)
-    }, [nextImage])
-
-    useEffect(() => {
-        heroImages.forEach((src) => {
-            const img = new window.Image()
-            img.src = src
-        })
     }, [])
-
-    const currentKenBurns = kenBurnsVariants[currentIndex % kenBurnsVariants.length]
 
     return (
         <section className="relative h-screen w-full overflow-hidden bg-charcoal-dark flex items-center justify-center">
@@ -155,87 +120,41 @@ export default function Hero() {
                     }}
                 />
 
-                <AnimatePresence mode="wait">
-                    <motion.div
-                        key={currentIndex}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 1.5, ease: "easeInOut" }}
-                        className="absolute inset-0"
+                <motion.div
+                    className="absolute inset-0"
+                    style={{
+                        width: '100%',
+                        height: '100%',
+                        position: 'absolute',
+                    }}
+                    animate={{
+                        scale: [1, 1.1],
+                        x: ['0%', '1%'],
+                        y: ['0%', '0.5%'],
+                    }}
+                    transition={{
+                        duration: 20,
+                        ease: "linear",
+                        repeat: Infinity,
+                        repeatType: "reverse",
+                    }}
+                >
+                    <Image
+                        src={HERO_IMAGE}
+                        alt="Luxury furniture showcase"
+                        fill
+                        priority
+                        quality={90}
+                        sizes="100vw"
                         style={{
-                            width: '100%',
-                            height: '100%',
-                            position: 'absolute',
-                            top: 0,
-                            left: 0,
+                            objectFit: 'cover',
+                            objectPosition: 'center',
                         }}
-                    >
-                        <motion.div
-                            className="absolute inset-0"
-                            style={{
-                                width: '100%',
-                                height: '100%',
-                                position: 'absolute',
-                            }}
-                            animate={{
-                                scale: currentKenBurns.scale,
-                                x: currentKenBurns.x,
-                                y: currentKenBurns.y,
-                            }}
-                            transition={{
-                                duration: 8,
-                                ease: "linear",
-                            }}
-                        >
-                            <Image
-                                src={heroImages[currentIndex]}
-                                alt="Luxury furniture showcase"
-                                fill
-                                priority={currentIndex === 0}
-                                quality={90}
-                                sizes="100vw"
-                                style={{
-                                    objectFit: 'cover',
-                                    objectPosition: 'center',
-                                }}
-                                unoptimized={false}
-                            />
-                        </motion.div>
-                    </motion.div>
-                </AnimatePresence>
+                        unoptimized
+                    />
+                </motion.div>
 
                 {isMounted && <FloatingParticles />}
-
-                <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-20 flex gap-3">
-                    {heroImages.map((_, index) => (
-                        <button
-                            key={index}
-                            onClick={() => setCurrentIndex(index)}
-                            className="group relative p-1"
-                            aria-label={`Go to slide ${index + 1}`}
-                        >
-                            <motion.div
-                                className={`h-1 rounded-full transition-colors duration-300 ${index === currentIndex
-                                    ? 'bg-gold'
-                                    : 'bg-white/30 group-hover:bg-white/60'
-                                    }`}
-                                animate={{
-                                    width: index === currentIndex ? 32 : 8,
-                                }}
-                                transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-                            />
-                            {index === currentIndex && (
-                                <motion.div
-                                    className="absolute inset-0 h-1 mt-1 rounded-full bg-gold/40"
-                                    layoutId="activeIndicator"
-                                    transition={{ duration: 0.4 }}
-                                    style={{ filter: 'blur(4px)' }}
-                                />
-                            )}
-                        </button>
-                    ))}
-                </div>
             </div>
 
             <div className="container relative z-20 px-4 text-center">
@@ -246,7 +165,7 @@ export default function Hero() {
                 >
                     <motion.div variants={itemVariants}>
                         <motion.span
-                            className="inline-block text-gold tracking-[0.25em] font-medium mb-6 text-xs md:text-sm uppercase"
+                            className="inline-block text-gold tracking-[0.35em] font-semibold mb-4 text-xs md:text-sm uppercase"
                             animate={{
                                 backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
                             }}
@@ -259,33 +178,36 @@ export default function Hero() {
                                 color: 'transparent',
                             }}
                         >
-                            ✦ {t('hero.timelessElegance', 'Timeless Elegance')} ✦
+                            ✦ Krafted Furniture ✦
                         </motion.span>
                     </motion.div>
 
                     <motion.h1
-                        className="text-4xl md:text-6xl lg:text-8xl font-heading font-bold text-white mb-6 leading-tight"
+                        className="text-5xl md:text-7xl lg:text-9xl font-heading font-extrabold text-white mb-4 leading-none tracking-tight"
                         variants={itemVariants}
                     >
-                        {t('hero.heading_part1', 'Crafting Comfort')} <br />
                         <motion.span
-                            className="inline-block italic font-light"
+                            className="inline-block"
                             style={{
-                                background: 'linear-gradient(135deg, #F4C430 0%, #D4AF37 50%, #C5A028 100%)',
+                                background: 'linear-gradient(135deg, #FFFFFF 0%, #F4C430 40%, #D4AF37 70%, #C5A028 100%)',
                                 WebkitBackgroundClip: 'text',
                                 backgroundClip: 'text',
                                 color: 'transparent',
+                                textShadow: '0 0 80px rgba(212,175,55,0.3)',
                             }}
                         >
-                            {t('hero.heading_part2', 'Into Art')}
+                            QUEEN & KING
                         </motion.span>
                     </motion.h1>
 
                     <motion.p
-                        className="max-w-xl mx-auto text-gray-300 mb-12 text-lg md:text-xl font-light leading-relaxed"
+                        className="max-w-2xl mx-auto text-white/90 mb-10 text-xl md:text-2xl lg:text-3xl font-light tracking-[0.15em] uppercase"
                         variants={itemVariants}
+                        style={{
+                            textShadow: '0 2px 20px rgba(0,0,0,0.5)',
+                        }}
                     >
-                        {t('hero.tagline', 'Discover our curated collection of handcrafted furniture designed to elevate your living space.')}
+                        You Deserve The Crown
                     </motion.p>
 
                     <motion.div
@@ -303,7 +225,7 @@ export default function Hero() {
                                     size="lg"
                                     className="min-w-[200px] text-lg relative overflow-hidden group"
                                 >
-                                    <span className="relative z-10">{t('hero.cta.shop', 'Shop Collection')}</span>
+                                    <span className="relative z-10 text-xl font-bold tracking-widest">ORDER NOW</span>
                                     <motion.div
                                         className="absolute inset-0 bg-gradient-to-r from-gold-dark via-gold to-gold-dark"
                                         style={{ backgroundSize: '200% 100%' }}
@@ -352,3 +274,4 @@ export default function Hero() {
         </section>
     )
 }
+
