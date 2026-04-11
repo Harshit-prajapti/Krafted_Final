@@ -7,7 +7,8 @@ import { useTranslation } from 'react-i18next'
 import { useState, useEffect, useMemo } from 'react'
 import Image from 'next/image'
 
-const HERO_IMAGE = 'https://pub-6373be2f34c246649e921d2bef6e47c1.r2.dev/web%20cover%20page%20krafted.png'
+const DESKTOP_HERO_IMAGE = 'https://pub-6373be2f34c246649e921d2bef6e47c1.r2.dev/web%20cover%20page%20krafted.png'
+const MOBILE_HERO_IMAGE = '/images/mobileHero.jpeg'
 
 function FloatingParticles() {
     const particles = useMemo(() =>
@@ -127,7 +128,7 @@ export default function Hero() {
                     }}
                 >
                     <Image
-                        src={HERO_IMAGE}
+                        src={DESKTOP_HERO_IMAGE}
                         alt=""
                         fill
                         priority
@@ -156,13 +157,23 @@ export default function Hero() {
                 >
                     <div className="absolute inset-x-0 top-0 bottom-[26%] md:inset-0 md:px-6">
                         <Image
-                            src={HERO_IMAGE}
+                            src={MOBILE_HERO_IMAGE}
                             alt="Luxury furniture showcase"
                             fill
                             priority
                             quality={90}
                             sizes="100vw"
-                            className="hero-ios-fix object-contain object-center md:object-center"
+                            className="hero-ios-fix object-contain object-center md:hidden"
+                            unoptimized
+                        />
+                        <Image
+                            src={DESKTOP_HERO_IMAGE}
+                            alt="Luxury furniture showcase"
+                            fill
+                            priority
+                            quality={90}
+                            sizes="100vw"
+                            className="hero-ios-fix hidden object-contain object-center md:block"
                             unoptimized
                         />
                     </div>
