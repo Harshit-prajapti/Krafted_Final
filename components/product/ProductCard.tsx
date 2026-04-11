@@ -64,19 +64,21 @@ export default function ProductCard({ id, name, price, image, category, slug }: 
     return (
         <div className="group relative w-full">
             <div className="relative aspect-[3/4] overflow-hidden rounded-lg bg-gray-100">
-                <img
-                    src={imgError ? '/placeholder.png' : image}
-                    alt={name}
-                    onError={() => setImgError(true)}
-                    loading="lazy"
-                    decoding="async"
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    style={{
-                        WebkitBackfaceVisibility: 'hidden',
-                        backfaceVisibility: 'hidden',
-                        transform: 'translateZ(0)'
-                    }}
-                />
+                <Link href={`/product/${slug}`} className="block h-full w-full">
+                    <img
+                        src={imgError ? '/placeholder.png' : image}
+                        alt={name}
+                        onError={() => setImgError(true)}
+                        loading="lazy"
+                        decoding="async"
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        style={{
+                            WebkitBackfaceVisibility: 'hidden',
+                            backfaceVisibility: 'hidden',
+                            transform: 'translateZ(0)'
+                        }}
+                    />
+                </Link>
 
                 <div className="absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out bg-gradient-to-t from-black/80 to-transparent pt-10">
                     <div className="flex gap-2 justify-center mb-3">
