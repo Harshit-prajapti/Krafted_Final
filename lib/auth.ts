@@ -6,6 +6,58 @@ import { prisma } from "./prisma"
 import bcrypt from "bcryptjs"
 import { UserRole } from "@prisma/client"
 
+const googleAuthEnabled = Boolean(
+    process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET
+)
+
+const providers = [
+    ...(googleAuthEnabled
+        ? [
+            GoogleProvider({
+                clientId: process.env.GOOGLE_CLIENT_ID!,
+                clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+            }),
+        ]
+        : []),
+    CredentialsProvider({
+        name: "Credentials",
+        credentials: {
+            email: { label: "Email", type: "email" },
+            password: { label: "Password", type: "password" },
+        },
+        async authorize(credentials) {
+            if (!credentials?.email || !credentials.password) return null
+
+            const normalizedEmail = credentials.email.trim().toLowerCase()
+
+            const user = await prisma.user.findFirst({
+                where: {
+                    email: {
+                        equals: normalizedEmail,
+                        mode: "insensitive",
+                    },
+                },
+            })
+
+            if (!user || !user.password) return null
+
+            const isValid = await bcrypt.compare(
+                credentials.password,
+                user.password
+            )
+
+            if (!isValid) return null
+
+            return {
+                id: user.id,
+                email: user.email,
+                name: user.name,
+                role: user.role,
+            }
+        },
+    }),
+]
+
 /* =======================
    Module Augmentation
 ======================= */
@@ -42,45 +94,7 @@ export const authOptions: NextAuthOptions = {
         maxAge: 30 * 24 * 60 * 60, // 30 days
     },
 
-    providers: [
-        /* ---------- GOOGLE ---------- */
-        GoogleProvider({
-            clientId: process.env.GOOGLE_CLIENT_ID!,
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-        }),
-
-        /* ---------- CREDENTIALS ---------- */
-        CredentialsProvider({
-            name: "Credentials",
-            credentials: {
-                email: { label: "Email", type: "email" },
-                password: { label: "Password", type: "password" },
-            },
-            async authorize(credentials) {
-                if (!credentials?.email || !credentials.password) return null
-
-                const user = await prisma.user.findUnique({
-                    where: { email: credentials.email },
-                })
-
-                if (!user || !user.password) return null
-
-                const isValid = await bcrypt.compare(
-                    credentials.password,
-                    user.password
-                )
-
-                if (!isValid) return null
-
-                return {
-                    id: user.id,
-                    email: user.email,
-                    name: user.name,
-                    role: user.role,
-                }
-            },
-        }),
-    ],
+    providers,
 
     /* =======================
        Callbacks
@@ -136,4 +150,3 @@ export const authOptions: NextAuthOptions = {
 
     debug: process.env.NODE_ENV === "development",
 }
-

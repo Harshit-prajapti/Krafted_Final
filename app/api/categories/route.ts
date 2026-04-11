@@ -3,6 +3,7 @@ import { prisma } from '@/lib/prisma'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { z } from 'zod'
+import { getCategoryBranchSummary } from '@/lib/category-queries'
 
 // Schema for Category Creation/Update
 const categorySchema = z.object({
@@ -21,7 +22,7 @@ const categorySchema = z.object({
 export async function GET(request: NextRequest) {
     try {
         const searchParams = request.nextUrl.searchParams
-        const type = searchParams.get('type')
+        const type = searchParams.get('type') as z.infer<typeof categorySchema>['type'] | null
         const parentId = searchParams.get('parentId')
         const isActive = searchParams.get('isActive')
         const includeChildren = searchParams.get('includeChildren') === 'true'
@@ -29,16 +30,32 @@ export async function GET(request: NextRequest) {
         // Build filter object dynamically
         const where: any = {}
         if (type) where.type = type
-        if (parentId) where.parentId = parentId
+        if (parentId) {
+            where.parents = {
+                some: { parentId }
+            }
+        }
         if (isActive !== null) where.isActive = isActive === 'true'
 
-        // Fetch categories from Prisma
-        const categories = await prisma.category.findMany({
-            where,
+        const fetchCategories = (queryWhere: typeof where) => prisma.category.findMany({
+            where: queryWhere,
             include: {
-                children: includeChildren, // Include sub-categories if requested
+                children: includeChildren
+                    ? {
+                        include: {
+                            child: {
+                                select: {
+                                    id: true,
+                                    name: true,
+                                    slug: true,
+                                    isActive: true,
+                                }
+                            }
+                        }
+                    }
+                    : undefined,
                 _count: {
-                    select: { products: true } // Include count of products
+                    select: { products: true }
                 }
             },
             orderBy: {
@@ -46,7 +63,37 @@ export async function GET(request: NextRequest) {
             }
         })
 
-        return NextResponse.json(categories)
+        // Fetch categories from Prisma
+        let categories = await fetchCategories(where)
+
+        if (!parentId && categories.length === 0) {
+            categories = await fetchCategories({
+                ...(type ? { type } : {}),
+                ...(isActive !== null ? { isActive: isActive === 'true' } : {}),
+            } as typeof where)
+        }
+
+        const serializedCategories = await Promise.all(
+            categories.map(async (category) => {
+                const summary = await getCategoryBranchSummary(category.id)
+
+                return {
+                    id: category.id,
+                    name: category.name,
+                    slug: category.slug,
+                    type: category.type,
+                    isActive: category.isActive,
+                    children: includeChildren ? category.children : undefined,
+                    _count: {
+                        products: summary.total,
+                        children: Array.isArray(category.children) ? category.children.length : 0,
+                    },
+                    coverImage: summary.coverImage,
+                }
+            })
+        )
+
+        return NextResponse.json(serializedCategories)
     } catch (error) {
         console.error('[CATEGORIES_GET_ERROR]', error)
         return NextResponse.json(
@@ -55,4 +102,3 @@ export async function GET(request: NextRequest) {
         )
     }
 }
-

@@ -111,29 +111,16 @@ export default function Hero() {
     }, [])
 
     return (
-        <section className="relative h-screen w-full overflow-hidden bg-charcoal-dark flex items-center justify-center">
-            <div className="absolute inset-0 z-0">
-                <div
-                    className="absolute inset-0 z-10"
-                    style={{
-                        background: 'linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 40%, rgba(0,0,0,0.7) 100%)'
-                    }}
-                />
-
+        <section className="relative mt-[110px] min-h-[calc(100svh-110px)] w-full overflow-hidden bg-charcoal-dark flex items-end justify-center md:mt-[132px] md:min-h-[calc(100svh-132px)] md:items-center">
+            <div className="absolute inset-0 z-0 pointer-events-none">
                 <motion.div
-                    className="absolute inset-0"
-                    style={{
-                        width: '100%',
-                        height: '100%',
-                        position: 'absolute',
-                    }}
+                    className="absolute inset-0 hidden md:block"
                     animate={{
-                        scale: [1, 1.1],
-                        x: ['0%', '1%'],
-                        y: ['0%', '0.5%'],
+                        x: ['0%', '0.8%'],
+                        y: ['0%', '0.8%'],
                     }}
                     transition={{
-                        duration: 20,
+                        duration: 24,
                         ease: "linear",
                         repeat: Infinity,
                         repeatType: "reverse",
@@ -141,23 +128,50 @@ export default function Hero() {
                 >
                     <Image
                         src={HERO_IMAGE}
-                        alt="Luxury furniture showcase"
+                        alt=""
                         fill
                         priority
-                        quality={90}
+                        quality={85}
                         sizes="100vw"
-                        style={{
-                            objectFit: 'cover',
-                            objectPosition: 'center',
-                        }}
+                        className="hero-ios-fix object-cover object-center opacity-30 blur-sm"
                         unoptimized
                     />
+                </motion.div>
+
+                <div
+                    className="absolute inset-0 z-10"
+                    style={{
+                        background: 'linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.06) 42%, rgba(0,0,0,0.72) 100%)'
+                    }}
+                />
+
+                <motion.div
+                    className="absolute inset-0 hero-animate"
+                    initial={{ opacity: 0, y: 18 }}
+                    animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 18 }}
+                    transition={{
+                        duration: 0.9,
+                        ease: [0.25, 0.46, 0.45, 0.94],
+                    }}
+                >
+                    <div className="absolute inset-x-0 top-0 bottom-[26%] md:inset-0 md:px-6">
+                        <Image
+                            src={HERO_IMAGE}
+                            alt="Luxury furniture showcase"
+                            fill
+                            priority
+                            quality={90}
+                            sizes="100vw"
+                            className="hero-ios-fix object-contain object-center md:object-center"
+                            unoptimized
+                        />
+                    </div>
                 </motion.div>
 
                 {isMounted && <FloatingParticles />}
             </div>
 
-            <div className="container relative z-20 px-4 text-center">
+            <div className="container relative z-20 px-4 pb-8 text-center md:pb-0">
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"
@@ -165,7 +179,7 @@ export default function Hero() {
                 >
                     <motion.div variants={itemVariants}>
                         <motion.span
-                            className="inline-block text-gold tracking-[0.35em] font-semibold mb-4 text-xs md:text-sm uppercase"
+                        className="inline-block text-gold tracking-[0.28em] font-semibold mb-3 text-[10px] md:mb-4 md:text-sm uppercase"
                             animate={{
                                 backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
                             }}
@@ -183,7 +197,7 @@ export default function Hero() {
                     </motion.div>
 
                     <motion.h1
-                        className="text-5xl md:text-7xl lg:text-9xl font-heading font-extrabold text-white mb-4 leading-none tracking-tight"
+                        className="text-3xl sm:text-4xl md:text-7xl lg:text-9xl font-heading font-extrabold text-white mb-3 md:mb-4 leading-none tracking-tight"
                         variants={itemVariants}
                     >
                         <motion.span
@@ -201,7 +215,7 @@ export default function Hero() {
                     </motion.h1>
 
                     <motion.p
-                        className="max-w-2xl mx-auto text-white/90 mb-10 text-xl md:text-2xl lg:text-3xl font-light tracking-[0.15em] uppercase"
+                        className="max-w-2xl mx-auto text-white/90 mb-6 text-sm sm:text-base md:mb-10 md:text-2xl lg:text-3xl font-light tracking-[0.12em] uppercase"
                         variants={itemVariants}
                         style={{
                             textShadow: '0 2px 20px rgba(0,0,0,0.5)',
@@ -211,7 +225,7 @@ export default function Hero() {
                     </motion.p>
 
                     <motion.div
-                        className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+                        className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center"
                         variants={itemVariants}
                     >
                         <Link href="/shop">
@@ -223,9 +237,9 @@ export default function Hero() {
                                 <Button
                                     variant="luxury"
                                     size="lg"
-                                    className="min-w-[200px] text-lg relative overflow-hidden group"
+                                    className="min-w-[200px] text-base md:text-lg relative overflow-hidden group"
                                 >
-                                    <span className="relative z-10 text-xl font-bold tracking-widest">ORDER NOW</span>
+                                    <span className="relative z-10 text-lg md:text-xl font-bold tracking-widest">ORDER NOW</span>
                                     <motion.div
                                         className="absolute inset-0 bg-gradient-to-r from-gold-dark via-gold to-gold-dark"
                                         style={{ backgroundSize: '200% 100%' }}
@@ -244,7 +258,7 @@ export default function Hero() {
                                 <Button
                                     variant="outline"
                                     size="lg"
-                                    className="min-w-[200px] text-lg border-white/50 text-white hover:bg-white hover:text-black hover:border-white backdrop-blur-sm"
+                                    className="min-w-[200px] text-base md:text-lg border-white/50 text-white hover:bg-white hover:text-black hover:border-white backdrop-blur-sm"
                                 >
                                     {t('hero.ourStory', 'Our Story')}
                                 </Button>
@@ -255,7 +269,7 @@ export default function Hero() {
             </div>
 
             <motion.div
-                className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 flex flex-col items-center gap-3 z-20"
+                className="absolute bottom-4 left-1/2 hidden -translate-x-1/2 text-white/50 flex-col items-center gap-3 z-20 md:flex"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
                 transition={{ delay: 1.5, duration: 1 }}
@@ -274,4 +288,3 @@ export default function Hero() {
         </section>
     )
 }
-

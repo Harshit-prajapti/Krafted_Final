@@ -3,8 +3,9 @@ import { ArrowLeft, Home } from 'lucide-react'
 
 export default function NotFound() {
     return (
-        <div className="min-h-[80vh] flex items-center justify-center bg-white px-4">
-            <div className="max-w-xl w-full text-center space-y-8 animate-in fade-in slide-in-from-bottom-5 duration-700">
+        <div className="min-h-screen bg-white px-4 pt-36 pb-16">
+            <div className="mx-auto flex min-h-[calc(100vh-9rem)] max-w-5xl items-center justify-center">
+                <div className="max-w-xl w-full text-center space-y-8 animate-in fade-in slide-in-from-bottom-5 duration-700">
 
                 {/* Abstract Art / 404 Representation */}
                 <div className="relative h-40 flex items-center justify-center">
@@ -43,6 +44,7 @@ export default function NotFound() {
                         <ArrowLeft className="w-4 h-4" />
                         <span>Continue Shopping</span>
                     </Link>
+                </div>
                 </div>
             </div>
         </div>

@@ -9,11 +9,12 @@ export async function middleware(request: NextRequest) {
     // Protect /admin routes
     if (pathname.startsWith('/admin')) {
         if (!token) {
-            return NextResponse.redirect(new URL('/auth/signin', request.url))
+            const loginUrl = new URL('/user/login', request.url)
+            loginUrl.searchParams.set('callbackUrl', pathname)
+            return NextResponse.redirect(loginUrl)
         }
 
         if (token.role !== 'ADMIN') {
-            console.log("I was called");
             return NextResponse.redirect(new URL('/', request.url))
         }
     }

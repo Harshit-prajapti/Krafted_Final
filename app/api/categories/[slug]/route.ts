@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
+import { getImmediateChildCategorySummaries, getProductsForCategoryBranch } from "@/lib/category-queries";
 
 export async function GET(request: NextRequest, { params }: { params: Promise<{ slug: string }> }) {
     try {
@@ -12,15 +13,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
         const category = await prisma.category.findUnique({
             where: { slug },
             include: {
-                children: {
-                    include: {
-                        child: {
-                            include: {
-                                _count: { select: { products: true } }
-                            }
-                        }
-                    }
-                }
+                children: true,
             }
         })
 
@@ -28,51 +21,27 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
             return NextResponse.json({ error: 'Category not found' }, { status: 404 })
         }
 
-        const [productRelations, totalProducts] = await Promise.all([
-            prisma.productCategory.findMany({
-                where: { categoryId: category.id },
-                skip,
-                take: pageSize,
-                include: {
-                    product: {
-                        include: {
-                            images: { take: 1, orderBy: { priority: 'asc' } },
-                            categories: { include: { category: true } },
-                            reviews: { select: { rating: true } }
-                        }
-                    }
-                }
+        const [{ products, total }, children] = await Promise.all([
+            getProductsForCategoryBranch({
+                categoryId: category.id,
+                page,
+                pageSize,
             }),
-            prisma.productCategory.count({ where: { categoryId: category.id } })
+            getImmediateChildCategorySummaries(category.id),
         ])
-
-        const products = productRelations.map(rel => {
-            const reviews = rel.product.reviews || []
-            const averageRating = reviews.length > 0
-                ? reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length
-                : 0
-
-            const { reviews: _, ...productData } = rel.product
-            return {
-                ...productData,
-                basePrice: productData.basePrice.toString(),
-                averageRating: Math.round(averageRating * 10) / 10,
-                totalReviews: reviews.length
-            }
-        })
 
         return NextResponse.json({
             category: {
                 id: category.id,
                 name: category.name,
                 slug: category.slug,
-                children: category.children
+                children,
             },
             products,
-            total: totalProducts,
+            total,
             page,
             pageSize,
-            totalPages: Math.ceil(totalProducts / pageSize)
+            totalPages: Math.ceil(total / pageSize)
         })
     } catch (error) {
         console.error('[CATEGORY_GET_ERROR]', error)

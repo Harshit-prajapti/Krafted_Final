@@ -6,6 +6,8 @@ import { X, Mail, Lock, Eye, EyeOff, ChevronRight, Sparkles, Home, Palette, Hear
 import { signIn, useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
 
+const googleAuthEnabled = process.env.NEXT_PUBLIC_GOOGLE_AUTH_ENABLED === "true";
+
 const GoogleIcon = () => (
     <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24">
         <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#c9a24d" />
@@ -41,6 +43,7 @@ export default function LoginPopup() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
+    const [error, setError] = useState("");
 
     // Flow state: 'questions' -> 'login'
     const [step, setStep] = useState<'questions' | 'login'>('questions');
@@ -71,16 +74,26 @@ export default function LoginPopup() {
     };
 
     const handleGoogleSignIn = async () => {
+        if (!googleAuthEnabled) return;
+        setError("");
         await signIn("google", { redirect: false });
         handleClose();
     };
 
     const handleCredentialsSignIn = async () => {
-        await signIn("credentials", {
-            email,
+        setError("");
+
+        const result = await signIn("credentials", {
+            email: email.trim().toLowerCase(),
             password,
             redirect: false,
         });
+
+        if (result?.error) {
+            setError("Sign in failed. Please check your email and password.");
+            return;
+        }
+
         handleClose();
     };
 
@@ -211,21 +224,31 @@ export default function LoginPopup() {
                                     </p>
                                 </div>
 
-                                <button
-                                    className="w-full h-11 mb-5 flex items-center justify-center rounded-xl border border-[#3a3a3a] bg-[#101010] text-gray-300 text-sm hover:border-[#c9a24d] hover:text-[#c9a24d] transition"
-                                    onClick={handleGoogleSignIn}
-                                >
-                                    <GoogleIcon />
-                                    Continue with Google
-                                </button>
+                                {googleAuthEnabled && (
+                                    <>
+                                        <button
+                                            className="w-full h-11 mb-5 flex items-center justify-center rounded-xl border border-[#3a3a3a] bg-[#101010] text-gray-300 text-sm hover:border-[#c9a24d] hover:text-[#c9a24d] transition"
+                                            onClick={handleGoogleSignIn}
+                                        >
+                                            <GoogleIcon />
+                                            Continue with Google
+                                        </button>
 
-                                <div className="flex items-center mb-5">
-                                    <span className="flex-1 border-t border-white/10" />
-                                    <span className="px-3 text-[11px] text-gray-500">OR</span>
-                                    <span className="flex-1 border-t border-white/10" />
-                                </div>
+                                        <div className="flex items-center mb-5">
+                                            <span className="flex-1 border-t border-white/10" />
+                                            <span className="px-3 text-[11px] text-gray-500">OR</span>
+                                            <span className="flex-1 border-t border-white/10" />
+                                        </div>
+                                    </>
+                                )}
 
                                 <div className="space-y-4">
+                                    {error && (
+                                        <div className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3">
+                                            <p className="text-xs text-red-300">{error}</p>
+                                        </div>
+                                    )}
+
                                     <div className="relative">
                                         <Mail className="absolute left-3 top-3.5 text-gray-400" size={16} />
                                         <input

@@ -14,6 +14,7 @@ const envSchema = z.object({
     CLOUDINARY_API_SECRET: z.string().optional(),
 
     // Payment Gateways (optional for now)
+    PAYMENT_TEST_MODE: z.string().optional(),
     RAZORPAY_KEY_ID: z.string().optional(),
     RAZORPAY_KEY_SECRET: z.string().optional(),
     STRIPE_SECRET_KEY: z.string().optional(),

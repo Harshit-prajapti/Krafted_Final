@@ -1,10 +1,12 @@
 "use client"
-import React, { useState } from "react"
+import React, { Suspense, useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Eye, EyeOff, Mail, Lock } from "lucide-react"
 import { signIn } from "next-auth/react"
 import { useSession } from "next-auth/react"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
+
+const googleAuthEnabled = process.env.NEXT_PUBLIC_GOOGLE_AUTH_ENABLED === "true"
 
 const GoogleIcon = () => (
     <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24">
@@ -15,16 +17,73 @@ const GoogleIcon = () => (
     </svg>
 )
 
-export default function LoginPage() {
+function LoginPageContent() {
     const { data: session } = useSession()
     const router = useRouter()
-    if (session) {
-        console.log("Session found : ", session)
-        router.replace("/")
-    }
+    const searchParams = useSearchParams()
+    const [callbackUrl, setCallbackUrl] = useState("/")
+    const [errorMessage, setErrorMessage] = useState("")
+    const [isSubmitting, setIsSubmitting] = useState(false)
+
+    useEffect(() => {
+        if (typeof window === "undefined") return
+
+        const params = new URLSearchParams(window.location.search)
+        setCallbackUrl(params.get("callbackUrl") || "/")
+    }, [])
+
+    useEffect(() => {
+        const error = searchParams.get("error")
+
+        if (error === "CredentialsSignin") {
+            setErrorMessage("The email or password is incorrect. If you signed up with Google before, create a password from the register page or reset your password.")
+            return
+        }
+
+        if (error) {
+            setErrorMessage("Sign in failed. Please try again.")
+            return
+        }
+
+        setErrorMessage("")
+    }, [searchParams])
+
+    useEffect(() => {
+        if (session) {
+            router.replace(callbackUrl)
+        }
+    }, [callbackUrl, router, session])
+
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [showPassword, setShowPassword] = useState(false)
+
+    const handleCredentialsSignIn = async () => {
+        setErrorMessage("")
+
+        if (!email.trim() || !password) {
+            setErrorMessage("Please enter both email and password.")
+            return
+        }
+
+        setIsSubmitting(true)
+
+        const result = await signIn("credentials", {
+            email: email.trim().toLowerCase(),
+            password,
+            redirect: false,
+            callbackUrl,
+        })
+
+        if (result?.error) {
+            setErrorMessage("The email or password is incorrect. If this email already exists without a password, use Create account once to set it.")
+            setIsSubmitting(false)
+            return
+        }
+
+        router.replace(result?.url || callbackUrl)
+        router.refresh()
+    }
 
     return (
         <div className="relative min-h-screen bg-[#0b0b0b] pt-36 pb-28 px-4 flex justify-center items-start">
@@ -60,26 +119,36 @@ export default function LoginPage() {
                         </p>
                     </div>
 
+                    {errorMessage && (
+                        <div className="mb-4 rounded-md border border-red-500/30 bg-red-500/10 p-3">
+                            <p className="text-xs text-red-300">{errorMessage}</p>
+                        </div>
+                    )}
+
                     {/* Google */}
-                    <button
-                        className="w-full h-10 mb-5 flex items-center justify-center
+                    {googleAuthEnabled && (
+                        <>
+                            <button
+                                className="w-full h-10 mb-5 flex items-center justify-center
             rounded-md border border-[#3a3a3a]
             bg-[#101010] text-gray-300 text-sm
             hover:border-[#c9a24d] hover:text-[#c9a24d]
             transition"
 
-                        onClick={() => signIn("google")}
-                    >
-                        <GoogleIcon />
-                        Sign in with Google
-                    </button>
+                                onClick={() => signIn("google", { callbackUrl })}
+                            >
+                                <GoogleIcon />
+                                Sign in with Google
+                            </button>
 
-                    {/* Divider */}
-                    <div className="flex items-center mb-5">
-                        <span className="flex-1 border-t border-white/10" />
-                        <span className="px-3 text-[11px] text-gray-500">OR</span>
-                        <span className="flex-1 border-t border-white/10" />
-                    </div>
+                            {/* Divider */}
+                            <div className="flex items-center mb-5">
+                                <span className="flex-1 border-t border-white/10" />
+                                <span className="px-3 text-[11px] text-gray-500">OR</span>
+                                <span className="flex-1 border-t border-white/10" />
+                            </div>
+                        </>
+                    )}
 
                     {/* Email */}
                     <div className="mb-4">
@@ -129,15 +198,11 @@ export default function LoginPage() {
                     {/* Button */}
                     <Button
                         className="w-full h-10 bg-[#c9a24d] text-black
-            hover:bg-[#d6b45a] font-medium text-sm"
-                        onClick={() => signIn("credentials", {
-                            email,
-                            password,
-                            redirect: true,
-                            callbackUrl: "/",
-                        })}
+            hover:bg-[#d6b45a] font-medium text-sm disabled:opacity-60"
+                        onClick={handleCredentialsSignIn}
+                        disabled={isSubmitting}
                     >
-                        Sign In
+                        {isSubmitting ? "Signing In..." : "Sign In"}
                     </Button>
 
                     {/* Footer */}
@@ -150,5 +215,17 @@ export default function LoginPage() {
                 </div>
             </div>
         </div>
+    )
+}
+
+export default function LoginPage() {
+    return (
+        <Suspense
+            fallback={
+                <div className="relative flex min-h-screen items-start justify-center bg-[#0b0b0b] px-4 pb-28 pt-36" />
+            }
+        >
+            <LoginPageContent />
+        </Suspense>
     )
 }

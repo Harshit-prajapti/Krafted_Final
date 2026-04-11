@@ -47,13 +47,15 @@ async function main() {
 
     // 1. Create Users
     console.log('👤 Creating users...');
+    const adminPassword = process.env.ADMIN_SEED_PASSWORD || 'Mankind@1134';
     const hashedPassword = await bcrypt.hash('password123', 10);
+    const hashedAdminPassword = await bcrypt.hash(adminPassword, 10);
 
     const admin = await prisma.user.create({
         data: {
             name: 'Admin User',
             email: 'admin@krafted.com',
-            password: hashedPassword,
+            password: hashedAdminPassword,
             role: UserRole.ADMIN,
             phone: '+91 9876543210',
         },
@@ -775,7 +777,7 @@ async function main() {
     console.log('- Cart with items');
     console.log('- 1 Order with shipping and history');
     console.log('\n🔐 Login Credentials:');
-    console.log('Admin: admin@krafted.com / password123');
+    console.log(`Admin: admin@krafted.com / ${adminPassword}`);
     console.log('Vendor 1: john@vendor.com / password123');
     console.log('Vendor 2: jane@vendor.com / password123');
     console.log('Customer 1: alice@customer.com / password123');

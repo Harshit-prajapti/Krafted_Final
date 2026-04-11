@@ -33,6 +33,51 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ error: 'Order already paid' }, { status: 400 })
         }
 
+        const isPaymentTestMode =
+            process.env.PAYMENT_TEST_MODE === 'true' && session.user.role === 'ADMIN'
+        const existingPaymentId = order.payments[0]?.id
+
+        if (isPaymentTestMode) {
+            const testOrderId = `test_order_${order.id.slice(-12)}`
+            const testPaymentId = `test_payment_${order.id.slice(-12)}`
+
+            await prisma.payment.upsert({
+                where: {
+                    id: existingPaymentId || 'new'
+                },
+                update: {
+                    paymentIntentId: testOrderId,
+                    transactionId: null,
+                    status: 'CREATED',
+                    rawResponse: {
+                        mode: 'TEST',
+                        initialized_at: new Date().toISOString()
+                    }
+                },
+                create: {
+                    orderId: order.id,
+                    provider: 'RAZORPAY',
+                    paymentIntentId: testOrderId,
+                    amount: order.totalAmount,
+                    currency: 'INR',
+                    status: 'CREATED',
+                    rawResponse: {
+                        mode: 'TEST',
+                        initialized_at: new Date().toISOString()
+                    }
+                }
+            })
+
+            return NextResponse.json({
+                mode: 'TEST',
+                testOrderId,
+                testPaymentId,
+                amount: Number(order.totalAmount),
+                currency: 'INR',
+                orderId: order.id
+            })
+        }
+
         const razorpayOrder = await createRazorpayOrder({
             amount: Number(order.totalAmount),
             currency: 'INR',
@@ -45,11 +90,16 @@ export async function POST(request: NextRequest) {
 
         await prisma.payment.upsert({
             where: {
-                id: order.payments[0]?.id || 'new'
+                id: existingPaymentId || 'new'
             },
             update: {
                 paymentIntentId: razorpayOrder.id,
-                status: 'CREATED'
+                transactionId: null,
+                status: 'CREATED',
+                rawResponse: {
+                    mode: 'LIVE',
+                    initialized_at: new Date().toISOString()
+                }
             },
             create: {
                 orderId: order.id,
@@ -57,11 +107,16 @@ export async function POST(request: NextRequest) {
                 paymentIntentId: razorpayOrder.id,
                 amount: order.totalAmount,
                 currency: 'INR',
-                status: 'CREATED'
+                status: 'CREATED',
+                rawResponse: {
+                    mode: 'LIVE',
+                    initialized_at: new Date().toISOString()
+                }
             }
         })
 
         return NextResponse.json({
+            mode: 'LIVE',
             razorpayOrderId: razorpayOrder.id,
             amount: razorpayOrder.amount,
             currency: razorpayOrder.currency,

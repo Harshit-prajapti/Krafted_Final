@@ -1,11 +1,12 @@
 import { prisma } from '@/lib/prisma'
 import CategoriesClient from '@/components/categories/CategoriesClient'
 import PageHeader from '@/components/ui/PageHeader'
+import { getCategoryBranchSummary } from '@/lib/category-queries'
 
 export const dynamic = 'force-dynamic'
 
 export default async function CategoriesPage() {
-    const categories = await prisma.category.findMany({
+    let categories = await prisma.category.findMany({
         where: {
             isActive: true,
             parents: { none: {} }
@@ -14,30 +15,38 @@ export default async function CategoriesPage() {
             _count: {
                 select: { products: true, children: true }
             },
-            products: {
-                take: 1,
-                include: {
-                    product: {
-                        include: {
-                            images: {
-                                take: 1,
-                                orderBy: { priority: 'asc' }
-                            }
-                        }
-                    }
-                }
-            }
         },
         orderBy: { name: 'asc' }
     })
 
-    const categoriesWithCover = categories.map(cat => ({
-        id: cat.id,
-        name: cat.name,
-        slug: cat.slug,
-        _count: cat._count,
-        coverImage: cat.products[0]?.product?.images[0]?.imageUrl || null
-    }))
+    if (categories.length === 0) {
+        categories = await prisma.category.findMany({
+            where: { isActive: true },
+            include: {
+                _count: {
+                    select: { products: true, children: true }
+                },
+            },
+            orderBy: { name: 'asc' }
+        })
+    }
+
+    const categoriesWithCover = await Promise.all(
+        categories.map(async (cat) => {
+            const summary = await getCategoryBranchSummary(cat.id)
+
+            return {
+                id: cat.id,
+                name: cat.name,
+                slug: cat.slug,
+                _count: {
+                    products: summary.total,
+                    children: cat._count.children,
+                },
+                coverImage: summary.coverImage,
+            }
+        })
+    )
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50/50 pt-28 pb-16">

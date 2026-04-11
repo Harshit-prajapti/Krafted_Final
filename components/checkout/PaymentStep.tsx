@@ -8,9 +8,16 @@ interface PaymentStepProps {
     onPlaceOrder: (method: string) => void
     isProcessing: boolean
     totalAmount?: number
+    isTestMode?: boolean
 }
 
-export default function PaymentStep({ onBack, onPlaceOrder, isProcessing, totalAmount }: PaymentStepProps) {
+export default function PaymentStep({
+    onBack,
+    onPlaceOrder,
+    isProcessing,
+    totalAmount,
+    isTestMode = false,
+}: PaymentStepProps) {
     const [method, setMethod] = useState<'CARD' | 'COD'>('CARD')
 
     return (
@@ -18,8 +25,21 @@ export default function PaymentStep({ onBack, onPlaceOrder, isProcessing, totalA
             <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-xl shadow-gray-100/50">
                 <div className="mb-8">
                     <h2 className="text-2xl font-black text-gray-900 tracking-tight">Payment Method</h2>
-                    <p className="text-gray-500 font-medium">Select how you'd like to pay for your order.</p>
+                    <p className="text-gray-500 font-medium">
+                        {isTestMode
+                            ? 'Checkout is currently in testing mode. Orders will be marked paid without a live charge.'
+                            : "Select how you'd like to pay for your order."}
+                    </p>
                 </div>
+
+                {isTestMode && (
+                    <div className="mb-6 rounded-2xl border border-amber-200 bg-amber-50 px-5 py-4">
+                        <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-700">Testing Enabled</p>
+                        <p className="mt-1 text-sm font-medium text-amber-900">
+                            Use this mode only while validating the checkout flow on the live site.
+                        </p>
+                    </div>
+                )}
 
                 <div className="grid grid-cols-1 gap-4">
                     <div
@@ -38,8 +58,12 @@ export default function PaymentStep({ onBack, onPlaceOrder, isProcessing, totalA
                                     <CreditCard className="h-6 w-6" />
                                 </div>
                                 <div>
-                                    <p className="font-black text-gray-900 text-lg">Pay Online</p>
-                                    <p className="text-sm text-gray-500 font-medium">Secure payment via Razorpay</p>
+                                    <p className="font-black text-gray-900 text-lg">
+                                        {isTestMode ? 'Test Payment' : 'Pay Online'}
+                                    </p>
+                                    <p className="text-sm text-gray-500 font-medium">
+                                        {isTestMode ? 'Simulate a successful checkout without a live charge' : 'Secure payment via Razorpay'}
+                                    </p>
                                 </div>
                             </div>
                             <div className={`h-6 w-6 rounded-full border-2 flex items-center justify-center transition-all ${method === 'CARD'
@@ -50,7 +74,7 @@ export default function PaymentStep({ onBack, onPlaceOrder, isProcessing, totalA
                             </div>
                         </div>
 
-                        {method === 'CARD' && (
+                        {method === 'CARD' && !isTestMode && (
                             <div className="mt-6 pt-6 border-t border-gray-100">
                                 <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Accepted Methods</p>
                                 <div className="flex flex-wrap gap-3">
@@ -131,7 +155,9 @@ export default function PaymentStep({ onBack, onPlaceOrder, isProcessing, totalA
                         </>
                     ) : (
                         <>
-                            {method === 'CARD' ? 'Pay Now' : 'Place Order'}
+                            {method === 'CARD'
+                                ? (isTestMode ? 'Complete Test Payment' : 'Pay Now')
+                                : 'Place Order'}
                             {totalAmount && (
                                 <span className="ml-1 px-3 py-1 bg-white/20 rounded-lg text-sm">
                                     ₹{totalAmount.toLocaleString('en-IN')}

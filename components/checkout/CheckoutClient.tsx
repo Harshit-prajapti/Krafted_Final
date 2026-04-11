@@ -17,11 +17,17 @@ interface CheckoutClientProps {
     initialCart: any
     initialAddresses: any[]
     userEmail?: string | null
+    isPaymentTestMode: boolean
 }
 
 import { useTranslation } from 'react-i18next'
 
-export default function CheckoutClient({ initialCart, initialAddresses, userEmail }: CheckoutClientProps) {
+export default function CheckoutClient({
+    initialCart,
+    initialAddresses,
+    userEmail,
+    isPaymentTestMode,
+}: CheckoutClientProps) {
     const { t } = useTranslation('checkout')
     const { t: tCommon } = useTranslation('common')
     const [step, setStep] = useState<'ADDRESS' | 'PAYMENT'>('ADDRESS')
@@ -49,11 +55,17 @@ export default function CheckoutClient({ initialCart, initialAddresses, userEmai
         })
     }
 
+    const redirectToFailure = (orderId: string, reason: string) => {
+        router.push(`/checkout/failed?orderId=${orderId}&reason=${encodeURIComponent(reason)}`)
+    }
+
     const handlePlaceOrder = async (paymentMethod: string) => {
         if (!selectedAddressId) return
 
         setIsProcessing(true)
         setPaymentStatus('creating')
+
+        let shouldResetState = true
 
         try {
             const orderRes = await fetch('/api/orders', {
@@ -72,16 +84,12 @@ export default function CheckoutClient({ initialCart, initialAddresses, userEmai
             }
 
             const order = await orderRes.json()
+            const selectedAddress = initialAddresses.find(a => a.id === selectedAddressId)
 
             if (paymentMethod === 'COD') {
+                shouldResetState = false
                 router.push(`/checkout/success?orderId=${order.id}`)
                 router.refresh()
-                return
-            }
-
-            const razorpayLoaded = await initializeRazorpay()
-            if (!razorpayLoaded) {
-                alert(t('errors.paymentGatewayFailed', 'Failed to load payment gateway. Please try again.'))
                 return
             }
 
@@ -93,12 +101,47 @@ export default function CheckoutClient({ initialCart, initialAddresses, userEmai
                 body: JSON.stringify({ orderId: order.id })
             })
 
+            const paymentData = await paymentRes.json()
+
             if (!paymentRes.ok) {
+                alert(paymentData.error || t('errors.paymentInitFailed', 'Failed to initialize payment. Please try again.'))
+                return
+            }
+
+            if (paymentData.mode !== 'TEST' && (!paymentData.keyId || !paymentData.razorpayOrderId)) {
                 alert(t('errors.paymentInitFailed', 'Failed to initialize payment. Please try again.'))
                 return
             }
 
-            const paymentData = await paymentRes.json()
+            if (paymentData.mode === 'TEST') {
+                setPaymentStatus('verifying')
+
+                const verifyRes = await fetch('/api/payments/verify', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        orderId: order.id,
+                        paymentMode: 'TEST',
+                        testPaymentId: paymentData.testPaymentId,
+                        testOrderId: paymentData.testOrderId,
+                    })
+                })
+
+                if (verifyRes.ok) {
+                    shouldResetState = false
+                    router.push(`/checkout/success?orderId=${order.id}&paymentId=${paymentData.testPaymentId}`)
+                    router.refresh()
+                } else {
+                    redirectToFailure(order.id, 'verification_failed')
+                }
+                return
+            }
+
+            const razorpayLoaded = await initializeRazorpay()
+            if (!razorpayLoaded) {
+                alert(t('errors.paymentGatewayFailed', 'Failed to load payment gateway. Please try again.'))
+                return
+            }
 
             const options = {
                 key: paymentData.keyId,
@@ -108,8 +151,8 @@ export default function CheckoutClient({ initialCart, initialAddresses, userEmai
                 description: `${t('order', 'Order')} #${order.id.slice(-8).toUpperCase()}`,
                 order_id: paymentData.razorpayOrderId,
                 prefill: {
-                    name: initialAddresses.find(a => a.id === selectedAddressId)?.fullName || '',
-                    contact: initialAddresses.find(a => a.id === selectedAddressId)?.phone || '',
+                    name: selectedAddress?.fullName || '',
+                    contact: selectedAddress?.phone || '',
                     email: userEmail || ''
                 },
                 theme: {
@@ -141,20 +184,38 @@ export default function CheckoutClient({ initialCart, initialAddresses, userEmai
                             router.push(`/checkout/success?orderId=${order.id}&paymentId=${response.razorpay_payment_id}`)
                             router.refresh()
                         } else {
-                            router.push(`/checkout/failed?orderId=${order.id}&reason=verification_failed`)
+                            redirectToFailure(order.id, 'verification_failed')
                         }
                     } catch (error) {
                         console.error('Verification error:', error)
-                        router.push(`/checkout/failed?orderId=${order.id}&reason=verification_error`)
+                        redirectToFailure(order.id, 'verification_error')
                     }
                 }
             }
 
             const razorpay = new window.Razorpay(options)
 
-            razorpay.on('payment.failed', (response: any) => {
+            razorpay.on('payment.failed', async (response: any) => {
                 console.error('Payment failed:', response.error)
-                router.push(`/checkout/failed?orderId=${order.id}&reason=${response.error.code}`)
+
+                try {
+                    await fetch('/api/payments/verify', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            orderId: order.id,
+                            paymentStatus: 'FAILED',
+                            razorpay_order_id: response.error?.metadata?.order_id,
+                            razorpay_payment_id: response.error?.metadata?.payment_id,
+                            errorCode: response.error?.code,
+                            errorDescription: response.error?.description,
+                        })
+                    })
+                } catch (failureError) {
+                    console.error('Failed to persist payment failure:', failureError)
+                }
+
+                redirectToFailure(order.id, response.error?.code || 'payment_failed')
             })
 
             razorpay.open()
@@ -163,7 +224,7 @@ export default function CheckoutClient({ initialCart, initialAddresses, userEmai
             console.error(error)
             alert(tCommon('errors.somethingWentWrong', 'Something went wrong. Please try again.'))
         } finally {
-            if (paymentStatus !== 'verifying') {
+            if (shouldResetState) {
                 setIsProcessing(false)
                 setPaymentStatus('idle')
             }
@@ -246,6 +307,7 @@ export default function CheckoutClient({ initialCart, initialAddresses, userEmai
                             onPlaceOrder={handlePlaceOrder}
                             isProcessing={isProcessing}
                             totalAmount={total}
+                            isTestMode={isPaymentTestMode}
                         />
                     )}
                 </div>

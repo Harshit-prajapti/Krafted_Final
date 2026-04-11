@@ -5,6 +5,8 @@ import { Eye, EyeOff, Mail, Lock, User as UserIcon, Phone } from "lucide-react"
 import { signIn } from "next-auth/react"
 import { useRouter } from "next/navigation"
 
+const googleAuthEnabled = process.env.NEXT_PUBLIC_GOOGLE_AUTH_ENABLED === "true"
+
 const GoogleIcon = () => (
     <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24">
         <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#c9a24d" />
@@ -113,24 +115,28 @@ export default function RegisterPage() {
                     </div>
 
                     {/* Google */}
-                    <button
-                        className="w-full h-10 mb-5 flex items-center justify-center
+                    {googleAuthEnabled && (
+                        <>
+                            <button
+                                className="w-full h-10 mb-5 flex items-center justify-center
             rounded-md border border-[#3a3a3a]
             bg-[#101010] text-gray-300 text-sm
             hover:border-[#c9a24d] hover:text-[#c9a24d]
             transition"
-                        onClick={() => signIn("google")}
-                    >
-                        <GoogleIcon />
-                        Sign up with Google
-                    </button>
+                                onClick={() => signIn("google")}
+                            >
+                                <GoogleIcon />
+                                Sign up with Google
+                            </button>
 
-                    {/* Divider */}
-                    <div className="flex items-center mb-5">
-                        <span className="flex-1 border-t border-white/10" />
-                        <span className="px-3 text-[11px] text-gray-500">OR</span>
-                        <span className="flex-1 border-t border-white/10" />
-                    </div>
+                            {/* Divider */}
+                            <div className="flex items-center mb-5">
+                                <span className="flex-1 border-t border-white/10" />
+                                <span className="px-3 text-[11px] text-gray-500">OR</span>
+                                <span className="flex-1 border-t border-white/10" />
+                            </div>
+                        </>
+                    )}
 
                     {/* Error Message */}
                     {error && (

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Inter, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
@@ -7,7 +7,6 @@ import ConditionalFooter from "@/components/layout/ConditionalFooter";
 import SessionProviders from "@/components/providers/SessionProviders";
 import { QueryProvider } from "./providers";
 import I18nProvider from "@/components/providers/I18nProvider";
-import { PT_Serif } from 'next/font/google';
 import SplashScreen from "@/components/ui/SplashScreen";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import LoginPopup from "@/components/ui/LoginPopup";
@@ -31,9 +30,11 @@ const roboto_mono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
+  applicationName: "Krafted Royale",
   title: "Krafted Furniture | Luxury Handcrafted Furniture",
   description:
     "Experience the epitome of luxury with Krafted Furniture. Handcrafted, premium designs for your sophisticated home.",
+  manifest: "/manifest.webmanifest",
   keywords: [
     "luxury furniture",
     "handcrafted",
@@ -41,6 +42,25 @@ export const metadata: Metadata = {
     "gold furniture",
     "modern interior",
   ],
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Krafted Royale",
+  },
+  icons: {
+    icon: [
+      { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icons/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [
+      { url: "/icons/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: [{ url: "/icons/icon-192.png" }],
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0a0a0a",
 };
 
 export default function RootLayout({
@@ -76,4 +96,3 @@ export default function RootLayout({
     </html>
   );
 }
-

@@ -32,6 +32,7 @@ export default async function CheckoutSuccessPage({ searchParams }: PageProps) {
     if (!order) notFound()
 
     const estimatedDelivery = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+    const isTestPayment = order.payments[0]?.transactionId?.startsWith('test_payment_') || false
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-green-50/50 to-white py-20 px-4 mt-20">
@@ -123,7 +124,11 @@ export default async function CheckoutSuccessPage({ searchParams }: PageProps) {
                                 <div className="flex justify-between text-sm">
                                     <span className="text-gray-500">Method</span>
                                     <span className="font-bold text-gray-900">
-                                        {order.payments[0]?.provider === 'RAZORPAY' ? 'Razorpay' : 'Cash on Delivery'}
+                                        {isTestPayment
+                                            ? 'Test Payment'
+                                            : order.payments[0]?.provider === 'RAZORPAY'
+                                                ? 'Razorpay'
+                                                : 'Cash on Delivery'}
                                     </span>
                                 </div>
                                 <div className="flex justify-between text-sm">

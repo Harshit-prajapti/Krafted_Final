@@ -11,8 +11,11 @@ import Link from 'next/link'
 export default async function CheckoutPage() {
     const session = await getServerSession(authOptions)
     if (!session) {
-        redirect('/login?callbackUrl=/checkout')
+        redirect('/user/login?callbackUrl=/checkout')
     }
+
+    const isPaymentTestMode =
+        process.env.PAYMENT_TEST_MODE === 'true' && session.user.role === 'ADMIN'
 
     const [cart, addresses] = await Promise.all([
         getCart(),
@@ -62,6 +65,7 @@ export default async function CheckoutPage() {
                     initialCart={serialize(cart)}
                     initialAddresses={serialize(addresses)}
                     userEmail={session.user.email}
+                    isPaymentTestMode={isPaymentTestMode}
                 />
             </div>
         </div>
