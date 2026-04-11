@@ -155,7 +155,7 @@ export default function Hero() {
                         ease: [0.25, 0.46, 0.45, 0.94],
                     }}
                 >
-                    <div className="absolute inset-x-0 top-0 bottom-[26%] md:inset-0 md:px-6">
+                    <div className="absolute inset-0">
                         <Image
                             src={MOBILE_HERO_IMAGE}
                             alt="Luxury furniture showcase"
@@ -163,7 +163,7 @@ export default function Hero() {
                             priority
                             quality={90}
                             sizes="100vw"
-                            className="hero-ios-fix object-contain object-center md:hidden"
+                            className="hero-ios-fix object-cover object-center md:hidden"
                             unoptimized
                         />
                         <Image
@@ -173,7 +173,7 @@ export default function Hero() {
                             priority
                             quality={90}
                             sizes="100vw"
-                            className="hero-ios-fix hidden object-contain object-center md:block"
+                            className="hero-ios-fix hidden object-cover object-center md:block"
                             unoptimized
                         />
                     </div>
