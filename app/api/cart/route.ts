@@ -7,11 +7,12 @@ import { z } from 'zod'
 const addToCartSchema = z.object({
     productId: z.string(),
     quantity: z.number().int().min(1).default(1),
+    variantId: z.string().optional().nullable(),
     selectedColor: z.object({
         id: z.string(),
         name: z.string(),
         hexCode: z.string()
-    })
+    }).optional().nullable()
 })
 
 /**
@@ -110,7 +111,7 @@ export async function POST(request: NextRequest) {
             )
         }
 
-        const { productId, selectedColor, quantity } = validation.data
+        const { productId, selectedColor, quantity, variantId } = validation.data
 
         // 1. Get or Create Cart
         let cart = await prisma.cart.findUnique({
@@ -122,24 +123,52 @@ export async function POST(request: NextRequest) {
                 data: { userId: session.user.id }
             })
         }
-        const varientForThisColor = await prisma.productVariant.findFirst({
-            where: {
-                productId: productId,
-                colorId: selectedColor.id as string
+        const product = await prisma.product.findUnique({
+            where: { id: productId },
+            include: {
+                variants: {
+                    where: { isActive: true },
+                    orderBy: [{ colorId: 'asc' }, { createdAt: 'asc' }]
+                }
             }
         })
 
-        if (!varientForThisColor) {
+        if (!product || !product.isActive) {
             return NextResponse.json(
-                { error: 'Variant not found' },
+                { error: 'Product not found' },
                 { status: 404 }
             )
         }
+
+        let resolvedVariantId: string | null = null
+
+        if (variantId) {
+            const variant = product.variants.find((item) => item.id === variantId)
+            if (!variant) {
+                return NextResponse.json(
+                    { error: 'Variant not found' },
+                    { status: 404 }
+                )
+            }
+            resolvedVariantId = variant.id
+        } else if (selectedColor?.id) {
+            const variant = product.variants.find((item) => item.colorId === selectedColor.id)
+            if (!variant) {
+                return NextResponse.json(
+                    { error: 'Variant not found' },
+                    { status: 404 }
+                )
+            }
+            resolvedVariantId = variant.id
+        } else if (product.variants.length > 0) {
+            resolvedVariantId = product.variants[0].id
+        }
+
         const existingItem = await prisma.cartItem.findFirst({
             where: {
                 cartId: cart.id,
                 productId: productId,
-                variantId: varientForThisColor.id
+                variantId: resolvedVariantId
             }
         })
 
@@ -154,7 +183,7 @@ export async function POST(request: NextRequest) {
                 data: {
                     cartId: cart.id,
                     productId,
-                    variantId: varientForThisColor.id,
+                    variantId: resolvedVariantId,
                     quantity
                 }
             })

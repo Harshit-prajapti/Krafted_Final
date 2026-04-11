@@ -91,7 +91,7 @@ export function useAddToCart(options: UseAddToCartOptions = {}) {
             })
 
             if (res.status === 401) {
-                router.push('/user/login?callbackUrl=/cart')
+                router.push('/user/login?callbackUrl=/checkout')
                 return
             }
 
@@ -100,7 +100,7 @@ export function useAddToCart(options: UseAddToCartOptions = {}) {
             }
 
             await queryClient.invalidateQueries({ queryKey: ['cart'] })
-            router.push('/cart')
+            router.push('/checkout')
         } catch (error) {
             setStatus('error')
             console.error('Buy now error:', error)

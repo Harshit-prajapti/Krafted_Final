@@ -7,6 +7,7 @@ import QuantitySelector from './QuantitySelector';
 import ProductRating from './ProductRating';
 import LimitedTimeOffer from './LimitedTimeOffer';
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 interface Color {
   color: {
@@ -33,6 +34,7 @@ export default function ProductInfo({
 }) {
   const { t } = useTranslation('product')
   const { t: tCommon } = useTranslation('common')
+  const router = useRouter();
   const [selectedColor, setSelectedColor] = useState(colors[0]?.color || null);
   const [quantity, setQuantity] = useState(1);
   const [addedToCart, setAddedToCart] = useState(false);
@@ -62,8 +64,30 @@ export default function ProductInfo({
     }
   };
 
-  const handleBuyNow = () => {
-    console.log('Buy now:', { productId, selectedColor, quantity });
+  const handleBuyNow = async () => {
+    if (isAdding) return;
+    setIsAdding(true);
+
+    try {
+      const res = await axios.post('/api/cart', {
+        productId,
+        selectedColor,
+        quantity,
+      });
+
+      if (res.status >= 200 && res.status < 300) {
+        router.push('/checkout');
+      }
+    } catch (error: any) {
+      if (error?.response?.status === 401) {
+        router.push('/user/login?callbackUrl=/checkout');
+        return;
+      }
+
+      console.error('Failed to start buy now flow', error);
+    } finally {
+      setIsAdding(false);
+    }
   };
 
   const originalPrice = (parseFloat(price) * 1.3).toFixed(2);
