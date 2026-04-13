@@ -353,112 +353,113 @@ export default function Navbar() {
                     </div>
                 </div>
 
-                {/* Mobile Menu Sidebar */}
-                {mobileMenuOpen && (
-                    <>
-                        {/* Overlay */}
-                        <motion.div
-                            className="md:hidden fixed inset-0 bg-black/50 z-40"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            onClick={() => setMobileMenuOpen(false)}
-                        />
+            </motion.nav>
 
-                        {/* Sidebar */}
-                        <motion.div
-                            className="md:hidden fixed top-0 left-0 h-full w-[85vw] max-w-sm bg-white z-50 shadow-2xl overflow-y-auto"
-                            initial={{ x: '-100%' }}
-                            animate={{ x: 0 }}
-                            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                        >
-                            <div className="flex flex-col h-full">
-                                {/* Header */}
-                                <div className="flex items-center justify-between p-6 border-b border-gray-200">
-                                    <Link href="/" onClick={() => setMobileMenuOpen(false)}>
-                                        <BrandMark compact />
-                                    </Link>
-                                    <button
-                                        onClick={() => setMobileMenuOpen(false)}
-                                        className="text-foreground hover:text-gold transition-colors"
-                                    >
-                                        <X size={24} />
-                                    </button>
-                                </div>
+            {/* Mobile Menu Sidebar */}
+            {mobileMenuOpen && (
+                <>
+                    {/* Overlay */}
+                    <motion.div
+                        className="md:hidden fixed inset-0 bg-black/50 z-[70]"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        onClick={() => setMobileMenuOpen(false)}
+                    />
 
-                                {/* Search Bar */}
-                                <div className="p-6 border-b border-gray-200">
-                                    <Link
-                                        href="/search"
-                                        onClick={() => setMobileMenuOpen(false)}
-                                        className="flex items-center gap-3 w-full px-4 py-3 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
-                                    >
-                                        <Search size={20} className="text-gray-600" />
-                                        <span className="text-gray-600">{t('nav.searchProducts')}</span>
-                                    </Link>
-                                </div>
+                    {/* Sidebar */}
+                    <motion.div
+                        className="md:hidden fixed top-0 left-0 z-[80] h-full w-[85vw] max-w-sm overflow-y-auto bg-white shadow-2xl"
+                        initial={{ x: '-100%' }}
+                        animate={{ x: 0 }}
+                        transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+                    >
+                        <div className="flex h-full flex-col">
+                            {/* Header */}
+                            <div className="flex items-center justify-between border-b border-gray-200 p-6">
+                                <Link href="/" onClick={() => setMobileMenuOpen(false)}>
+                                    <BrandMark compact />
+                                </Link>
+                                <button
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="text-foreground transition-colors hover:text-gold"
+                                >
+                                    <X size={24} />
+                                </button>
+                            </div>
 
-                                {/* Mobile Language Switcher */}
-                                <div className="p-6 border-b border-gray-200">
-                                    <LanguageSwitcher variant="mobile" />
-                                </div>
+                            {/* Search Bar */}
+                            <div className="border-b border-gray-200 p-6">
+                                <Link
+                                    href="/search"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="flex w-full items-center gap-3 rounded-lg bg-gray-100 px-4 py-3 transition-colors hover:bg-gray-200"
+                                >
+                                    <Search size={20} className="text-gray-600" />
+                                    <span className="text-gray-600">{t('nav.searchProducts')}</span>
+                                </Link>
+                            </div>
 
-                                {/* Categories Section */}
-                                <div className="flex-1 overflow-y-auto">
-                                    <div className="p-6">
-                                        <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">
-                                            {t('nav.categories')}
-                                        </h3>
-                                        <div className="grid grid-cols-2 gap-4">
-                                            {navCategories.map((category) => (
-                                                <Link
-                                                    key={category.slug}
-                                                    href={`/categories/${category.slug}`}
-                                                    onClick={() => setMobileMenuOpen(false)}
-                                                    className="group"
-                                                >
-                                                    <div className="relative aspect-square rounded-lg overflow-hidden mb-2 border border-gray-200 group-hover:border-gold transition-colors">
-                                                        <img
-                                                            src={category.image}
-                                                            alt={category.label}
-                                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                                                        />
-                                                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors" />
-                                                    </div>
-                                                    <p className="text-sm font-medium text-center text-gray-800 group-hover:text-gold transition-colors">
-                                                        {category.label}
-                                                    </p>
-                                                </Link>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
+                            {/* Mobile Language Switcher */}
+                            <div className="border-b border-gray-200 p-6">
+                                <LanguageSwitcher variant="mobile" />
+                            </div>
 
-                                {/* Bottom Quick Navigation */}
-                                <div className="border-t border-gray-200 bg-white">
-                                    <div className="grid grid-cols-3 gap-2 p-4">
-                                        {quickNavItems.map((item) => {
-                                            const Icon = item.icon
-                                            return (
-                                                <Link
-                                                    key={item.name}
-                                                    href={item.href}
-                                                    onClick={() => setMobileMenuOpen(false)}
-                                                    className="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-gray-100 transition-colors"
-                                                >
-                                                    <Icon size={24} className="text-gray-700" />
-                                                    <span className="text-xs font-medium text-gray-700">
-                                                        {item.name}
-                                                    </span>
-                                                </Link>
-                                            )
-                                        })}
+                            {/* Categories Section */}
+                            <div className="flex-1 overflow-y-auto">
+                                <div className="p-6">
+                                    <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gray-900">
+                                        {t('nav.categories')}
+                                    </h3>
+                                    <div className="grid grid-cols-2 gap-4">
+                                        {navCategories.map((category) => (
+                                            <Link
+                                                key={category.slug}
+                                                href={`/categories/${category.slug}`}
+                                                onClick={() => setMobileMenuOpen(false)}
+                                                className="group"
+                                            >
+                                                <div className="relative mb-2 aspect-square overflow-hidden rounded-lg border border-gray-200 transition-colors group-hover:border-gold">
+                                                    <img
+                                                        src={category.image}
+                                                        alt={category.label}
+                                                        className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                                                    />
+                                                    <div className="absolute inset-0 bg-black/20 transition-colors group-hover:bg-black/30" />
+                                                </div>
+                                                <p className="text-center text-sm font-medium text-gray-800 transition-colors group-hover:text-gold">
+                                                    {category.label}
+                                                </p>
+                                            </Link>
+                                        ))}
                                     </div>
                                 </div>
                             </div>
-                        </motion.div>
-                    </>
-                )}
-            </motion.nav>
+
+                            {/* Bottom Quick Navigation */}
+                            <div className="border-t border-gray-200 bg-white">
+                                <div className="grid grid-cols-3 gap-2 p-4">
+                                    {quickNavItems.map((item) => {
+                                        const Icon = item.icon
+                                        return (
+                                            <Link
+                                                key={item.name}
+                                                href={item.href}
+                                                onClick={() => setMobileMenuOpen(false)}
+                                                className="flex flex-col items-center gap-2 rounded-lg p-3 transition-colors hover:bg-gray-100"
+                                            >
+                                                <Icon size={24} className="text-gray-700" />
+                                                <span className="text-xs font-medium text-gray-700">
+                                                    {item.name}
+                                                </span>
+                                            </Link>
+                                        )
+                                    })}
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
+                </>
+            )}
         </>
     )
 }
