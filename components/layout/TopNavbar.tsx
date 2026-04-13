@@ -18,7 +18,7 @@ function TopNavbar() {
         <div className="w-full bg-gradient-to-r from-[#1a1a1a] via-[#2d2416] to-[#1a1a1a] border-b border-amber-500/30 relative">
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-500/5 to-transparent animate-shimmer" />
             <div className="container mx-auto px-4 md:px-6 relative z-[60]">
-                <div className="flex items-center justify-between py-2 text-xs md:text-sm h-15">
+                <div className="flex h-11 items-center justify-between text-xs md:h-12 md:text-sm">
 
                     <div className="flex items-center space-x-3 md:space-x-4">
                         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
@@ -221,16 +221,16 @@ export default function Navbar() {
             {/* Main Navigation */}
             <motion.nav
                 className={cn(
-                    "fixed w-full z-50 transition-all duration-300 border-b border-transparent bg-white",
+                    "fixed w-full z-50 overflow-visible transition-all duration-300 border-b bg-white/95 backdrop-blur-xl",
                     isScrolled
-                        ? "top-0 border-white/10 shadow-lg py-4"
-                        : "top-[40px] md:top-[44px] bg-transparent py-6"
+                        ? "top-0 min-h-[112px] border-white/10 py-4 shadow-lg md:min-h-[118px]"
+                        : "top-[44px] min-h-[124px] border-amber-200/50 py-5 shadow-[0_16px_35px_rgba(0,0,0,0.10)] md:top-[48px] md:min-h-[134px] md:py-6"
                 )}
                 initial={{ y: -100 }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.5 }}
             >
-                <div className="container mx-auto grid grid-cols-[2.25rem_minmax(0,1fr)_auto] items-center gap-3 px-4 md:flex md:items-center md:justify-between md:px-6">
+                <div className="container mx-auto grid min-h-[84px] grid-cols-[2.25rem_minmax(0,1fr)_auto] items-center gap-3 px-4 md:flex md:min-h-[88px] md:items-center md:justify-between md:px-6">
                     {/* Mobile Menu Button */}
                     <button
                         className="flex h-9 w-9 items-center justify-center text-foreground hover:text-gold transition-colors md:hidden"
@@ -240,7 +240,7 @@ export default function Navbar() {
                     </button>
 
                     {/* Logo */}
-                    <Link href="/" className="mx-auto min-w-0 justify-self-center md:mx-0">
+                    <Link href="/" className="mx-auto flex min-w-0 items-center justify-center justify-self-center py-1 md:mx-0">
                         <BrandMark />
                     </Link>
 
